@@ -1,169 +1,236 @@
 // src/layouts/DashboardLayout.tsx
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { cn } from "@/utils/cn";
+import {
+  BarChart3,
+  DollarSign,
+  FileText,
+  Shield,
+  Bell,
+  LogOut,
+} from "lucide-react";
 
-// 🔥 Import only confirmed working components
-import { Button } from "@serendipetey/components";
+// 🎯 Import real design system components with proper types
+import {
+  Button,
+  SidebarMenu,
+  SidebarProfile,
+  SidebarBusinessLogo,
+  SidebarMenuItem,
+  SidebarMenuSection,
+  SidebarMenuSectionRoot,
+  useNavigationState,
+  type SidebarProfileData,
+  type NavigationConfig,
+} from "@serendipetey/components";
 
-// Create a simple, working sidebar using design tokens
-const SimpleSidebar = () => {
+// 📋 Portal Pro Navigation Configuration (matching storybook exactly)
+const navigationConfig: NavigationConfig = {
+  standalone: [
+    {
+      id: "dashboard",
+      label: "Dashboard",
+      href: "/dashboard",
+      icon: BarChart3,
+    },
+  ],
+  sections: [
+    {
+      id: "funding",
+      title: "Funding",
+      icon: DollarSign,
+      items: [
+        {
+          id: "apply-funding",
+          label: "Apply for Funding",
+          href: "/funding/apply",
+        },
+        {
+          id: "submit-returns",
+          label: "Submit Returns",
+          href: "/funding/returns",
+          badge: "3", // Badge notification like in storybook
+        },
+        {
+          id: "view-applications",
+          label: "View Applications",
+          href: "/funding/applications",
+        },
+        {
+          id: "funding-calculator",
+          label: "Funding Calculator",
+          href: "/funding/calculator",
+        },
+      ],
+    },
+    {
+      id: "compliance",
+      title: "Compliance",
+      icon: Shield,
+      items: [
+        {
+          id: "compliance-overview",
+          label: "Overview",
+          href: "/compliance",
+        },
+        {
+          id: "audit-reports",
+          label: "Audit Reports",
+          href: "/compliance/audits",
+        },
+        {
+          id: "policy-management",
+          label: "Policy Management",
+          href: "/compliance/policies",
+        },
+      ],
+    },
+    {
+      id: "reports",
+      title: "Reports",
+      icon: FileText,
+      items: [
+        {
+          id: "financial-reports",
+          label: "Financial Reports",
+          href: "/reports/financial",
+        },
+        {
+          id: "analytics",
+          label: "Analytics",
+          href: "/reports/analytics",
+        },
+        {
+          id: "export-data",
+          label: "Export Data",
+          href: "/reports/export",
+        },
+      ],
+    },
+  ],
+};
+// 👤 User data structure (matching actual SidebarProfile component)
+const adminUser: SidebarProfileData = {
+  contact: {
+    name: "Jane Doe",
+    role: "Administrator",
+  },
+  entity: {
+    name: "Acme Corp",
+    id: "acme-corp-1",
+  },
+};
+
+// 🎯 Real Sidebar Component (matching Portal Pro storybook design exactly)
+const PortalProSidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const navigation = [
-    { name: "Dashboard", href: "/dashboard", icon: "📊" },
-    { name: "Profile", href: "/profile", icon: "👤" },
-    { name: "Settings", href: "/settings", icon: "⚙️" },
-  ];
+  // Smart navigation state management (like storybook)
+  const { activeItemId, expandedSections, toggleSection, isSectionExpanded } =
+    useNavigationState(navigationConfig, location.pathname);
 
   const handleNavigation = (href: string) => {
+    console.log("Navigate to:", href);
     navigate(href);
   };
 
+  const handleLogoClick = () => {
+    console.log("Navigate to dashboard");
+    navigate("/dashboard");
+  };
+
+  const handleSwitchEntity = () => {
+    console.log("Switch entity clicked");
+    // Future: Implement entity switching logic
+  };
+
   return (
-    <div className="flex h-full w-64 flex-col bg-white border-r border-gray-200">
-      {/* Logo/Brand - Using design tokens */}
-      <div className="flex h-16 items-center px-6 border-b border-gray-200">
-        <button
-          onClick={() => handleNavigation("/dashboard")}
-          className="text-xl font-bold text-primary hover:text-primary/90 transition-colors"
-        >
-          Portal Prototype
-        </button>
+    <SidebarMenu size="md">
+      {/* 🏢 Business Logo (with professional styling like storybook) */}
+      <SidebarBusinessLogo
+        businessName="Portal Pro"
+        logoUrl="https://via.placeholder.com/140x45/0e3a6c/ffffff?text=Portal+Pro"
+        width={140}
+        height={45}
+        onClick={handleLogoClick}
+      />
+
+      {/* 👤 User Profile */}
+      <SidebarProfile user={adminUser} onSwitchEntity={handleSwitchEntity} />
+
+      {/* 🧭 Navigation (exactly like storybook) */}
+      <div className="flex-1 py-4">
+        {/* Standalone Items */}
+        <div className="px-2 mb-4 space-y-1">
+          {navigationConfig.standalone?.map((item) => (
+            <SidebarMenuItem
+              key={item.id}
+              icon={item.icon}
+              active={activeItemId === item.id}
+              onNavigate={handleNavigation}
+              href={item.href}
+            >
+              {item.label}
+            </SidebarMenuItem>
+          ))}
+        </div>
+
+        {/* Collapsible Sections (like storybook) */}
+        <SidebarMenuSectionRoot type="multiple" value={expandedSections}>
+          {navigationConfig.sections.map((section) => (
+            <SidebarMenuSection
+              key={section.id}
+              title={section.title}
+              icon={section.icon}
+              value={section.id}
+              expanded={isSectionExpanded(section.id)}
+              onToggle={() => toggleSection(section.id)}
+            >
+              <div className="space-y-1 px-2">
+                {section.items.map((item) => (
+                  <SidebarMenuItem
+                    key={item.id}
+                    size="sm"
+                    active={activeItemId === item.id}
+                    onNavigate={handleNavigation}
+                    href={item.href}
+                    badge={item.badge}
+                  >
+                    {item.label}
+                  </SidebarMenuItem>
+                ))}
+              </div>
+            </SidebarMenuSection>
+          ))}
+        </SidebarMenuSectionRoot>
       </div>
 
-      {/* User Profile Section - Using design tokens */}
-      <div className="border-b border-gray-200 p-4 bg-gray-50">
-        <div className="flex items-center space-x-3">
-          <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white text-sm font-medium">
-            JD
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">
-              Portal Prototype
-            </p>
-            <p className="text-xs text-gray-500 truncate">John Doe</p>
-            <p className="text-xs text-gray-400 truncate">Administrator</p>
-          </div>
-        </div>
-        <Button
-          variant="outline"
+      {/* 🔔 Bottom Actions */}
+      <div className="border-t border-[var(--color-border)] p-3 space-y-1">
+        <SidebarMenuItem
+          icon={Bell}
           size="sm"
-          className="mt-3 w-full justify-start text-xs"
-          onClick={() => console.log("Switch entity")}
+          active={location.pathname === "/notifications"}
+          onNavigate={handleNavigation}
+          href="/notifications"
+          badge="5"
         >
-          ↗️ Switch Entity
-        </Button>
-      </div>
-
-      {/* Navigation - Enhanced with design tokens */}
-      <nav className="flex-1 space-y-1 px-3 py-4">
-        {/* Main Navigation */}
-        <div className="space-y-1">
-          {navigation.map((item) => {
-            const isActive =
-              location.pathname === item.href ||
-              (item.href === "/dashboard" && location.pathname === "/");
-
-            return (
-              <button
-                key={item.name}
-                onClick={() => handleNavigation(item.href)}
-                className={cn(
-                  "group flex items-center w-full px-3 py-2 text-sm font-medium rounded-md transition-colors",
-                  isActive
-                    ? "bg-primary text-white"
-                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                )}
-              >
-                <span className="mr-3 text-lg">{item.icon}</span>
-                {item.name}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* User Management Section */}
-        <div className="pt-4">
-          <h3 className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-            User Management
-          </h3>
-          <div className="space-y-1">
-            <button
-              onClick={() => handleNavigation("/profile")}
-              className={cn(
-                "group flex items-center w-full px-3 py-2 text-sm rounded-md transition-colors",
-                location.pathname === "/profile"
-                  ? "bg-gray-100 text-primary"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              )}
-            >
-              <span className="mr-3">👤</span>
-              Profile
-            </button>
-            <button
-              onClick={() => handleNavigation("/settings")}
-              className={cn(
-                "group flex items-center w-full px-3 py-2 text-sm rounded-md transition-colors",
-                location.pathname === "/settings"
-                  ? "bg-gray-100 text-primary"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              )}
-            >
-              <span className="mr-3">⚙️</span>
-              Settings
-            </button>
-          </div>
-        </div>
-
-        {/* Reports Section */}
-        <div className="pt-4">
-          <h3 className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-            Reports
-          </h3>
-          <div className="space-y-1">
-            <button
-              onClick={() => handleNavigation("/reports/analytics")}
-              className="group flex items-center w-full px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-            >
-              <span className="mr-3">📊</span>
-              Analytics
-            </button>
-            <button
-              onClick={() => handleNavigation("/reports/export")}
-              className="group flex items-center w-full px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-            >
-              <span className="mr-3">📄</span>
-              Export Data
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Bottom Actions - Using design tokens */}
-      <div className="border-t border-gray-200 p-3 space-y-1">
-        <button
-          onClick={() => handleNavigation("/notifications")}
-          className="group flex items-center w-full px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-        >
-          <span className="mr-3">🔔</span>
           Notifications
-          <span className="ml-auto bg-destructive text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-            5
-          </span>
-        </button>
-        <button
+        </SidebarMenuItem>
+
+        <SidebarMenuItem
+          icon={LogOut}
+          size="sm"
           onClick={() => console.log("Sign out")}
-          className="group flex items-center w-full px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
         >
-          <span className="mr-3">↗️</span>
           Sign Out
-        </button>
+        </SidebarMenuItem>
       </div>
-    </div>
+    </SidebarMenu>
   );
 };
 
+// 📱 Header Component (enhanced for consistency)
 const Header = () => {
   return (
     <header className="bg-white border-b border-gray-200 px-6 py-4">
@@ -172,15 +239,12 @@ const Header = () => {
           Prototype Dashboard
         </h2>
         <div className="flex items-center space-x-4">
-          {/* Real Button components - confirmed working */}
           <Button variant="primary" size="sm">
             New Action
           </Button>
-
           <Button variant="outline" size="sm">
             Secondary
           </Button>
-
           <button className="text-gray-500 hover:text-gray-700 transition-colors">
             🔔
           </button>
@@ -190,11 +254,12 @@ const Header = () => {
   );
 };
 
+// 🏗️ Main Layout Component
 export default function DashboardLayout() {
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* 🔥 Simple, Working Sidebar */}
-      <SimpleSidebar />
+      {/* 🎯 Portal Pro Sidebar (using actual design system components) */}
+      <PortalProSidebar />
 
       {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">

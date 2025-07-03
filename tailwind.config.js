@@ -1,11 +1,48 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+  // 🔥 CRITICAL: Explicitly list the CSS custom property classes that components use
+  safelist: [
+    // Specific classes the sidebar components actually use
+    "bg-[var(--color-surface)]",
+    "bg-[var(--color-surface-subtle)]",
+    "bg-[var(--color-navy-100)]",
+    "bg-[var(--color-navy-500)]",
+    "bg-[var(--color-accent)]",
+    "text-[var(--color-text-heading)]",
+    "text-[var(--color-text-body)]",
+    "text-[var(--color-text-muted)]",
+    "text-[var(--color-text-link)]",
+    "text-[var(--color-white)]",
+    "border-[var(--color-border)]",
+    "border-[var(--color-border-subtle)]",
+    "border-b-[var(--color-border)]",
+    "border-t-[var(--color-border)]",
+    "hover:bg-[var(--color-accent)]",
+    "hover:bg-[var(--color-navy-100)]",
+    "hover:text-[var(--color-accent-foreground)]",
+    "hover:text-[var(--color-text-link-hover)]",
+    "focus-visible:bg-[var(--color-focus-500)]",
+    "focus-visible:text-[var(--color-navy-500)]",
+    "focus:ring-[var(--color-border-focus)]",
+    "focus:ring-offset-[var(--color-surface)]",
+    "data-[state=open]:bg-[var(--color-navy-100)]",
+    // Additional classes for components
+    "min-h-[44px]",
+    "min-h-[40px]",
+    "sm:min-h-[40px]",
+    "w-4",
+    "h-4",
+    "w-5",
+    "h-5",
+    "w-8",
+    "h-8",
+  ],
+
   theme: {
     extend: {
-      // ✅ FIXED: Using direct hex values instead of CSS custom properties
-      // This ensures Tailwind classes like bg-success work reliably
-      // The design system components still use the CSS custom properties for consistency
+      // ✅ Design token color mappings with direct hex values for reliability
       colors: {
         // Primary colors (Navy) - using direct hex values for reliability
         primary: {
@@ -21,10 +58,32 @@ export default {
           700: "#07203c",
         },
 
+        // Navy scale (matches design tokens)
+        navy: {
+          100: "#f0f3f7",
+          200: "#e3e9ef",
+          300: "#b6c3d2",
+          400: "#164b8f",
+          500: "#0e3a6c",
+          600: "#0a2d54",
+          700: "#07203c",
+        },
+
         // CTA colors (Red) - using direct hex values for reliability
         cta: {
           DEFAULT: "#a30134", // --color-red-500
           foreground: "#ffffff",
+          100: "#f5e6eb",
+          200: "#ebccd7",
+          300: "#d199af",
+          400: "#b76687",
+          500: "#a30134",
+          600: "#7a0125",
+          700: "#52011a",
+        },
+
+        // Red scale (matches design tokens)
+        red: {
           100: "#f5e6eb",
           200: "#ebccd7",
           300: "#d199af",
@@ -88,10 +147,21 @@ export default {
           900: "#000000",
         },
 
-        // Semantic colors - using direct hex values for reliable Tailwind class generation
+        // 🔥 ADD: Support for component CSS custom property classes
+        // These allow classes like bg-[var(--color-navy-500)] to work
         surface: "#ffffff", // --color-surface
-        border: "#e4e4e4", // --color-border (gray-300)
-        background: "#ffffff", // --color-background
+        "surface-subtle": "#f7f8f9", // --color-surface-subtle
+        border: "#e4e4e4", // --color-border
+        "border-subtle": "#ebebeb", // --color-border-subtle
+        "text-heading": "#0e3a6c", // --color-text-heading (navy-500)
+        "text-body": "#4c5258", // --color-text-body (gray-700)
+        "text-muted": "#8f949a", // --color-text-muted (gray-500)
+        "text-link": "#a30134", // --color-text-link (red-500)
+        "text-link-hover": "#7a0125", // --color-text-link-hover (red-600)
+        accent: "#f0f3f7", // --color-accent (navy-100)
+        "accent-foreground": "#0e3a6c", // --color-accent-foreground
+        "focus-500": "#ff9900", // --color-focus-500
+        white: "#ffffff", // --color-white
       },
 
       // ✅ Map spacing tokens to Tailwind

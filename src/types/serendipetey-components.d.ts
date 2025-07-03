@@ -1,5 +1,5 @@
-// This file provides TypeScript declarations for the @serendipetey/components package
-// Place this file at: src/types/serendipetey-components.d.ts
+// src/types/serendipetey-components.d.ts
+// Updated TypeScript declarations matching actual component APIs
 
 declare module "@serendipetey/components" {
   import React from "react";
@@ -51,26 +51,113 @@ declare module "@serendipetey/components" {
 
   // Sidebar navigation components
   export interface SidebarMenuProps extends BaseComponentProps {
+    size?: "sm" | "md" | "lg";
     collapsed?: boolean;
-    onToggle?: () => void;
+    mobile?: "overlay" | "push";
+    mobileOpen?: boolean;
+    onMobileToggle?: (open: boolean) => void;
   }
 
   export const SidebarMenu: React.FC<SidebarMenuProps>;
 
+  // SidebarProfile types
+  export interface SidebarProfileData {
+    contact: {
+      name: string;
+      role: string;
+    };
+    entity: {
+      name: string;
+      id: string;
+    };
+  }
+
   export interface SidebarProfileProps extends BaseComponentProps {
-    // Add specific props as needed
+    user: SidebarProfileData;
+    onSwitchEntity?: () => void;
   }
 
   export const SidebarProfile: React.FC<SidebarProfileProps>;
-  export const SidebarMenuItem: React.FC<BaseComponentProps>;
-  export const SidebarMenuSection: React.FC<BaseComponentProps>;
-  export const SidebarBusinessLogo: React.FC<BaseComponentProps>;
+
+  // SidebarBusinessLogo types
+  export interface SidebarBusinessLogoProps extends BaseComponentProps {
+    businessName: string;
+    logoUrl?: string;
+    width?: number;
+    height?: number;
+    onClick?: () => void;
+  }
+
+  export const SidebarBusinessLogo: React.FC<SidebarBusinessLogoProps>;
+
+  // SidebarMenuItem types
+  export interface SidebarMenuItemProps extends BaseComponentProps {
+    icon?: React.ComponentType<any>;
+    active?: boolean;
+    size?: "sm" | "md" | "lg";
+    href?: string;
+    badge?: string | number;
+    onNavigate?: (href: string) => void;
+    onClick?: () => void;
+  }
+
+  export const SidebarMenuItem: React.FC<SidebarMenuItemProps>;
+
+  // SidebarMenuSection types (accordion sections)
+  export interface SidebarMenuSectionProps extends BaseComponentProps {
+    title: string;
+    icon?: React.ComponentType<any>;
+    value?: string;
+    expanded?: boolean;
+    onToggle?: (expanded: boolean) => void;
+    badge?: string | number;
+  }
+
+  export interface SidebarMenuSectionRootProps extends BaseComponentProps {
+    type?: "single" | "multiple";
+    collapsible?: boolean;
+    value?: string | string[];
+    onValueChange?: (value: string | string[]) => void;
+  }
+
+  export const SidebarMenuSection: React.FC<SidebarMenuSectionProps>;
+  export const SidebarMenuSectionRoot: React.FC<SidebarMenuSectionRootProps>;
+
+  // Navigation state management
+  export interface NavigationItem {
+    id: string;
+    label: string;
+    href: string;
+    icon?: React.ComponentType<any>;
+    badge?: string | number;
+  }
+
+  export interface NavigationSection {
+    id: string;
+    title: string;
+    icon: React.ComponentType<any>;
+    items: NavigationItem[];
+  }
+
+  export interface NavigationConfig {
+    standalone?: NavigationItem[];
+    sections: NavigationSection[];
+  }
+
+  export function useNavigationState(
+    config: NavigationConfig,
+    currentPath: string
+  ): {
+    activeItemId: string | null;
+    expandedSections: string[];
+    toggleSection: (sectionId: string) => void;
+    isSectionExpanded: (sectionId: string) => boolean;
+  };
 
   // Utility functions
   export function cn(...inputs: any[]): string;
 
   // Export all other components as generic React components for now
-  // This allows imports to work while providing basic type safety
   export const Select: React.FC<any>;
   export const Table: React.FC<any>;
   export const Pagination: React.FC<any>;
