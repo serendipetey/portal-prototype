@@ -3,115 +3,98 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      // Map design system tokens to Tailwind
+      // ✅ FIXED: Using direct hex values instead of CSS custom properties
+      // This ensures Tailwind classes like bg-success work reliably
+      // The design system components still use the CSS custom properties for consistency
       colors: {
-        // Primary colors (Navy)
+        // Primary colors (Navy) - using direct hex values for reliability
         primary: {
-          DEFAULT: "var(--color-navy-500)",
-          foreground: "var(--color-white)",
-          50: "var(--color-navy-50)",
-          100: "var(--color-navy-100)",
-          200: "var(--color-navy-200)",
-          300: "var(--color-navy-300)",
-          400: "var(--color-navy-400)",
-          500: "var(--color-navy-500)",
-          600: "var(--color-navy-600)",
-          700: "var(--color-navy-700)",
-          800: "var(--color-navy-800)",
-          900: "var(--color-navy-900)",
+          DEFAULT: "#0e3a6c", // --color-navy-500
+          foreground: "#ffffff",
+          50: "#f0f3f7",
+          100: "#f0f3f7",
+          200: "#e3e9ef",
+          300: "#b6c3d2",
+          400: "#164b8f",
+          500: "#0e3a6c",
+          600: "#0a2d54",
+          700: "#07203c",
         },
 
-        // CTA colors (Brand Red)
+        // CTA colors (Red) - using direct hex values for reliability
         cta: {
-          DEFAULT: "var(--color-red-500)",
-          foreground: "var(--color-white)",
-          50: "var(--color-red-50)",
-          100: "var(--color-red-100)",
-          200: "var(--color-red-200)",
-          300: "var(--color-red-300)",
-          400: "var(--color-red-400)",
-          500: "var(--color-red-500)",
-          600: "var(--color-red-600)",
-          700: "var(--color-red-700)",
-          800: "var(--color-red-800)",
-          900: "var(--color-red-900)",
+          DEFAULT: "#a30134", // --color-red-500
+          foreground: "#ffffff",
+          100: "#f5e6eb",
+          200: "#ebccd7",
+          300: "#d199af",
+          400: "#b76687",
+          500: "#a30134",
+          600: "#7a0125",
+          700: "#52011a",
         },
 
-        // Success colors (Teal)
+        // Success colors - maps to your --color-success-* tokens (#007d85 teal)
         success: {
-          DEFAULT: "var(--color-success-500)",
-          foreground: "var(--color-white)",
-          50: "var(--color-success-50)",
-          100: "var(--color-success-100)",
-          200: "var(--color-success-200)",
-          300: "var(--color-success-300)",
-          400: "var(--color-success-400)",
-          500: "var(--color-success-500)",
-          600: "var(--color-success-600)",
-          700: "var(--color-success-700)",
-          800: "var(--color-success-800)",
-          900: "var(--color-success-900)",
+          DEFAULT: "#007d85", // Direct hex value for reliability
+          foreground: "#ffffff",
+          50: "#f0f8f9",
+          100: "#e6f2f3",
+          200: "#bfe0e2",
+          300: "#99ced1",
+          400: "#99ced1",
+          500: "#007d85", // Main success color
+          600: "#00646a",
+          700: "#004b4f",
         },
 
-        // Warning colors (Amber)
+        // Warning colors - using direct hex values for reliability
         warning: {
-          DEFAULT: "var(--color-warning-500)",
-          foreground: "var(--color-warning-900)",
-          50: "var(--color-warning-50)",
-          100: "var(--color-warning-100)",
-          200: "var(--color-warning-200)",
-          300: "var(--color-warning-300)",
-          400: "var(--color-warning-400)",
-          500: "var(--color-warning-500)",
-          600: "var(--color-warning-600)",
-          700: "var(--color-warning-700)",
-          800: "var(--color-warning-800)",
-          900: "var(--color-warning-900)",
+          DEFAULT: "#b75b00", // --color-warning-500
+          foreground: "#000000",
+          100: "#fdf7f0",
+          200: "#f8efe6",
+          300: "#efdcbf",
+          400: "#e6c999",
+          500: "#b75b00",
+          600: "#924900",
+          700: "#6e3700",
         },
 
-        // Destructive colors
+        // Destructive colors - using direct hex values for reliability
         destructive: {
-          DEFAULT: "var(--color-destructive-500)",
-          foreground: "var(--color-white)",
-          50: "var(--color-destructive-50)",
-          100: "var(--color-destructive-100)",
-          200: "var(--color-destructive-200)",
-          300: "var(--color-destructive-300)",
-          400: "var(--color-destructive-400)",
-          500: "var(--color-destructive-500)",
-          600: "var(--color-destructive-600)",
-          700: "var(--color-destructive-700)",
-          800: "var(--color-destructive-800)",
-          900: "var(--color-destructive-900)",
+          DEFAULT: "#d92b2b", // --color-destructive-500
+          foreground: "#ffffff",
+          100: "#fbeaea",
+          200: "#f7d5d5",
+          300: "#efabab",
+          400: "#e78181",
+          500: "#d92b2b",
+          600: "#b12222",
+          700: "#8a1919",
         },
 
-        // Surface and background colors
-        background: "var(--color-background)",
-        surface: "var(--color-surface)",
-        accent: "var(--color-accent)",
-        "accent-foreground": "var(--color-accent-foreground)",
-
-        // Border and text colors
-        border: "var(--color-border)",
-        muted: "var(--color-text-muted)",
-        "muted-foreground": "var(--color-text-muted)",
-
-        // Gray scale
+        // Gray scale - using direct hex values for reliability
         gray: {
-          50: "var(--color-gray-50)",
-          100: "var(--color-gray-100)",
-          200: "var(--color-gray-200)",
-          300: "var(--color-gray-300)",
-          400: "var(--color-gray-400)",
-          500: "var(--color-gray-500)",
-          600: "var(--color-gray-600)",
-          700: "var(--color-gray-700)",
-          800: "var(--color-gray-800)",
-          900: "var(--color-gray-900)",
+          50: "#f7f8f9",
+          100: "#f3f4f5",
+          200: "#ebebeb",
+          300: "#e4e4e4",
+          400: "#b3b9bf",
+          500: "#8f949a",
+          600: "#6f757d",
+          700: "#4c5258",
+          800: "#2f2f2f",
+          900: "#000000",
         },
+
+        // Semantic colors - using direct hex values for reliable Tailwind class generation
+        surface: "#ffffff", // --color-surface
+        border: "#e4e4e4", // --color-border (gray-300)
+        background: "#ffffff", // --color-background
       },
 
-      // Spacing scale from design tokens
+      // ✅ Map spacing tokens to Tailwind
       spacing: {
         1: "var(--space-1)",
         2: "var(--space-2)",
@@ -128,7 +111,25 @@ export default {
         32: "var(--space-32)",
       },
 
-      // Typography from design tokens
+      // ✅ Map border radius tokens
+      borderRadius: {
+        sm: "var(--border-radius-sm)",
+        DEFAULT: "var(--border-radius-md)",
+        md: "var(--border-radius-md)",
+        lg: "var(--border-radius-lg)",
+        xl: "var(--border-radius-xl)",
+      },
+
+      // ✅ Map shadow tokens
+      boxShadow: {
+        sm: "var(--shadow-sm)",
+        DEFAULT: "var(--shadow-md)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
+        xl: "var(--shadow-xl)",
+      },
+
+      // ✅ Map typography tokens
       fontSize: {
         xs: [
           "var(--typography-caption-size)",
@@ -158,22 +159,6 @@ export default {
           "var(--typography-h1-size)",
           { lineHeight: "var(--typography-h1-line-height)" },
         ],
-      },
-
-      // Border radius from design tokens
-      borderRadius: {
-        sm: "var(--border-radius-sm)",
-        md: "var(--border-radius-md)",
-        lg: "var(--border-radius-lg)",
-        xl: "var(--border-radius-xl)",
-      },
-
-      // Shadows from design tokens
-      boxShadow: {
-        sm: "var(--shadow-sm)",
-        md: "var(--shadow-md)",
-        lg: "var(--shadow-lg)",
-        xl: "var(--shadow-xl)",
       },
     },
   },

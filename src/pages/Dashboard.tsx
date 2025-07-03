@@ -1,4 +1,5 @@
 import { cn } from "@/utils/cn";
+import CSSVerificationTest from "@/components/CSSVerificationTest";
 
 // Temporary placeholder components
 const PlaceholderCard = ({ children, className, ...props }: any) => (
@@ -39,7 +40,19 @@ const StatCard = ({
 export default function Dashboard() {
   return (
     <div className="space-y-6">
-      {/* Page header */}
+      {/* 🔥 PHASE 1 TEST: CSS Verification (temporary) */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <h3 className="text-lg font-semibold text-blue-900 mb-2">
+          🔍 Phase 1: CSS Loading Test
+        </h3>
+        <p className="text-blue-700 text-sm mb-4">
+          This verification panel will be removed once CSS loading is confirmed
+          working.
+        </p>
+        <CSSVerificationTest />
+      </div>
+
+      {/* Original dashboard content */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
         <p className="text-gray-600">
@@ -99,23 +112,13 @@ export default function Dashboard() {
                 user: "Emma Wilson",
                 time: "6 hours ago",
               },
-              {
-                action: "Application updated",
-                user: "David Brown",
-                time: "1 day ago",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0"
-              >
+            ].map((activity, index) => (
+              <div key={index} className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">
-                    {item.action}
-                  </p>
-                  <p className="text-sm text-gray-500">{item.user}</p>
+                  <p className="font-medium text-gray-900">{activity.action}</p>
+                  <p className="text-sm text-gray-600">by {activity.user}</p>
                 </div>
-                <span className="text-xs text-gray-400">{item.time}</span>
+                <span className="text-sm text-gray-500">{activity.time}</span>
               </div>
             ))}
           </div>
@@ -126,42 +129,43 @@ export default function Dashboard() {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
             Quick Actions
           </h3>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { label: "New Application", icon: "📝" },
-              { label: "Review Queue", icon: "👀" },
-              { label: "Generate Report", icon: "📊" },
-              { label: "Settings", icon: "⚙️" },
-            ].map((action, index) => (
-              <button
-                key={index}
-                className="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                <span className="text-2xl mb-2">{action.icon}</span>
-                <span className="text-sm font-medium text-gray-700">
-                  {action.label}
-                </span>
-              </button>
-            ))}
+          <div className="space-y-3">
+            <button className="w-full text-left p-3 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3">
+                <span className="text-xl">📝</span>
+                <div>
+                  <p className="font-medium text-gray-900">New Application</p>
+                  <p className="text-sm text-gray-600">
+                    Start a new application process
+                  </p>
+                </div>
+              </div>
+            </button>
+            <button className="w-full text-left p-3 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3">
+                <span className="text-xl">📊</span>
+                <div>
+                  <p className="font-medium text-gray-900">View Reports</p>
+                  <p className="text-sm text-gray-600">
+                    Access detailed analytics
+                  </p>
+                </div>
+              </div>
+            </button>
+            <button className="w-full text-left p-3 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3">
+                <span className="text-xl">⚙️</span>
+                <div>
+                  <p className="font-medium text-gray-900">Manage Settings</p>
+                  <p className="text-sm text-gray-600">
+                    Configure your preferences
+                  </p>
+                </div>
+              </div>
+            </button>
           </div>
         </PlaceholderCard>
       </div>
-
-      {/* Charts placeholder */}
-      <PlaceholderCard>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
-          Application Trends
-        </h3>
-        <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg">
-          <div className="text-center">
-            <span className="text-6xl">📈</span>
-            <p className="text-gray-500 mt-2">Chart component will go here</p>
-            <p className="text-sm text-gray-400">
-              Integration with design system components
-            </p>
-          </div>
-        </div>
-      </PlaceholderCard>
     </div>
   );
 }
