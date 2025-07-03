@@ -1,6 +1,12 @@
 import { cn } from "@/utils/cn";
 
-// Temporary placeholder components
+// 🔥 Import real design system components
+import { Button } from "@serendipetey/components";
+
+// 🔍 Temporary debug component
+import ButtonDebugTest from "@/components/ButtonDebugTest";
+
+// Temporary placeholder card (will be replaced in Task 2)
 const PlaceholderCard = ({ children, className, ...props }: any) => (
   <div
     className={cn(
@@ -11,30 +17,6 @@ const PlaceholderCard = ({ children, className, ...props }: any) => (
   >
     {children}
   </div>
-);
-
-const PlaceholderButton = ({
-  children,
-  variant = "primary",
-  className,
-  ...props
-}: any) => (
-  <button
-    className={cn(
-      "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors",
-      variant === "primary" && "bg-primary text-white hover:bg-primary/90",
-      variant === "outline" &&
-        "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50",
-      variant === "destructive" &&
-        "bg-destructive text-white hover:bg-destructive/90",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-      "disabled:pointer-events-none disabled:opacity-50",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </button>
 );
 
 const SettingToggle = ({
@@ -70,6 +52,9 @@ const SettingToggle = ({
 export default function Settings() {
   return (
     <div className="space-y-6">
+      {/* 🔍 TEMPORARY: Debug test for Button component */}
+      <ButtonDebugTest />
+
       {/* Page header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
@@ -128,10 +113,10 @@ export default function Settings() {
                 Language
               </label>
               <select className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20">
-                <option>English (US)</option>
-                <option>English (UK)</option>
+                <option>English</option>
                 <option>Spanish</option>
                 <option>French</option>
+                <option>German</option>
               </select>
             </div>
 
@@ -140,83 +125,52 @@ export default function Settings() {
                 Timezone
               </label>
               <select className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20">
-                <option>Pacific Time (PT)</option>
-                <option>Mountain Time (MT)</option>
-                <option>Central Time (CT)</option>
-                <option>Eastern Time (ET)</option>
+                <option>UTC-8 (Pacific Time)</option>
+                <option>UTC-5 (Eastern Time)</option>
+                <option>UTC+0 (GMT)</option>
+                <option>UTC+1 (Central European)</option>
               </select>
             </div>
-          </div>
-        </PlaceholderCard>
-
-        {/* Privacy Settings */}
-        <PlaceholderCard>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Privacy</h3>
-          <div className="space-y-1">
-            <SettingToggle
-              label="Profile Visibility"
-              description="Make your profile visible to other users"
-              enabled={true}
-            />
-            <SettingToggle
-              label="Activity Status"
-              description="Show when you're online or active"
-              enabled={false}
-            />
-            <SettingToggle
-              label="Data Analytics"
-              description="Help improve the platform with usage analytics"
-              enabled={true}
-            />
           </div>
         </PlaceholderCard>
 
         {/* Security Settings */}
         <PlaceholderCard>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Security</h3>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between py-3 border-b border-gray-100">
-              <div>
-                <p className="font-medium text-gray-900">Session Timeout</p>
-                <p className="text-sm text-gray-500">
-                  Automatically log out after inactivity
-                </p>
-              </div>
-              <select className="rounded-md border border-gray-300 px-3 py-1 text-sm">
-                <option>30 minutes</option>
-                <option>1 hour</option>
-                <option>4 hours</option>
-                <option>Never</option>
-              </select>
-            </div>
-
+          <div className="space-y-1">
             <SettingToggle
-              label="Login Alerts"
-              description="Get notified of new login attempts"
+              label="Two-Factor Authentication"
+              description="Add an extra layer of security to your account"
+              enabled={false}
+            />
+            <SettingToggle
+              label="Session Timeout"
+              description="Automatically log out after inactivity"
               enabled={true}
             />
-
             <SettingToggle
-              label="Require 2FA"
-              description="Require two-factor authentication for all logins"
-              enabled={false}
+              label="Login Notifications"
+              description="Get notified when someone logs into your account"
+              enabled={true}
             />
           </div>
         </PlaceholderCard>
 
-        {/* System Settings */}
-        <PlaceholderCard className="lg:col-span-2">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">System</h3>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Account Management */}
+        <PlaceholderCard>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Account Management
+          </h3>
+          <div className="grid grid-cols-1 gap-4">
             <div className="text-center p-4 border border-gray-200 rounded-lg">
               <span className="text-3xl mb-2 block">📊</span>
               <h4 className="font-medium text-gray-900">Export Data</h4>
               <p className="text-sm text-gray-500 mb-3">
                 Download your account data
               </p>
-              <PlaceholderButton variant="outline" className="text-sm">
+              <Button variant="outline" className="text-sm">
                 Export
-              </PlaceholderButton>
+              </Button>
             </div>
 
             <div className="text-center p-4 border border-gray-200 rounded-lg">
@@ -225,9 +179,9 @@ export default function Settings() {
               <p className="text-sm text-gray-500 mb-3">
                 Create a backup of your settings
               </p>
-              <PlaceholderButton variant="outline" className="text-sm">
+              <Button variant="outline" className="text-sm">
                 Backup
-              </PlaceholderButton>
+              </Button>
             </div>
 
             <div className="text-center p-4 border border-red-200 rounded-lg bg-red-50">
@@ -236,9 +190,9 @@ export default function Settings() {
               <p className="text-sm text-red-700 mb-3">
                 Permanently delete your account
               </p>
-              <PlaceholderButton variant="destructive" className="text-sm">
+              <Button variant="destructive" className="text-sm">
                 Delete
-              </PlaceholderButton>
+              </Button>
             </div>
           </div>
         </PlaceholderCard>
@@ -246,10 +200,8 @@ export default function Settings() {
 
       {/* Save button */}
       <div className="flex justify-end space-x-3">
-        <PlaceholderButton variant="outline">
-          Reset to Defaults
-        </PlaceholderButton>
-        <PlaceholderButton>Save All Changes</PlaceholderButton>
+        <Button variant="outline">Reset to Defaults</Button>
+        <Button>Save All Changes</Button>
       </div>
     </div>
   );

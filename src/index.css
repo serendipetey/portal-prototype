@@ -1,34 +1,34 @@
-/* ✅ STEP 1: Import design system tokens FIRST */
-@import "@serendipetey/design-tokens/dist/css/index.css";
+/* src/index.css - Portal Prototype CSS */
 
-/* ✅ STEP 2: Import Tailwind directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 🔥 SIMPLIFIED: Import the complete CSS bundle from design system */
+@import "@serendipetey/components/dist/styles.css";
 
-/* ✅ STEP 3: Base styles using design tokens */
-* {
+/* Portal-specific base styles only */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* Minimal reset for portal */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(
-    --font-family-sans,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif
-  );
-  line-height: var(--typography-body-line-height, 1.5);
-  color: var(--color-gray-900, #111827);
-  background-color: var(--color-surface, #ffffff);
-}
-
-#root {
+/* Portal-specific utility classes (if needed) */
+.portal-container {
   min-height: 100vh;
 }
+
+/* Remove any portal-specific overrides that might conflict */
