@@ -1,6 +1,9 @@
 import { cn } from "@/utils/cn";
 
-// Temporary placeholder components
+// 🔥 Import real design system components
+import { Button, Input } from "@serendipetey/components";
+
+// Temporary placeholder card (we can replace this later with a Card component if you have one)
 const PlaceholderCard = ({ children, className, ...props }: any) => (
   <div
     className={cn(
@@ -11,44 +14,6 @@ const PlaceholderCard = ({ children, className, ...props }: any) => (
   >
     {children}
   </div>
-);
-
-const PlaceholderInput = ({ label, value, className, ...props }: any) => (
-  <div className="space-y-2">
-    <label className="text-sm font-medium text-gray-700">{label}</label>
-    <input
-      className={cn(
-        "w-full rounded-md border border-gray-300 px-3 py-2 text-sm",
-        "focus:border-primary focus:ring-2 focus:ring-primary/20",
-        "disabled:bg-gray-50 disabled:text-gray-500",
-        className
-      )}
-      value={value}
-      {...props}
-    />
-  </div>
-);
-
-const PlaceholderButton = ({
-  children,
-  variant = "primary",
-  className,
-  ...props
-}: any) => (
-  <button
-    className={cn(
-      "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors",
-      variant === "primary" && "bg-primary text-white hover:bg-primary/90",
-      variant === "outline" &&
-        "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-      "disabled:pointer-events-none disabled:opacity-50",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </button>
 );
 
 export default function Profile() {
@@ -73,9 +38,11 @@ export default function Profile() {
               John Doe
             </h3>
             <p className="text-gray-500">Administrator</p>
-            <p className="text-sm text-gray-400 mt-1">Acme Corporation</p>
+            <p className="text-sm text-gray-400 mt-1">Portal Prototype</p>
 
-            <PlaceholderButton className="mt-4">Change Photo</PlaceholderButton>
+            <Button variant="outline" className="mt-4">
+              Change Photo
+            </Button>
           </div>
         </PlaceholderCard>
 
@@ -86,39 +53,47 @@ export default function Profile() {
               Personal Information
             </h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <PlaceholderInput
+              {/* 🔥 REPLACE: Use real Input components */}
+              <Input
                 label="First Name"
-                value="John"
+                labelState="required"
+                defaultValue="John"
                 placeholder="Enter your first name"
               />
-              <PlaceholderInput
+              <Input
                 label="Last Name"
-                value="Doe"
+                labelState="required"
+                defaultValue="Doe"
                 placeholder="Enter your last name"
               />
-              <PlaceholderInput
+              <Input
                 label="Email Address"
+                labelState="required"
                 type="email"
-                value="john.doe@acme.com"
+                defaultValue="john.doe@prototype.com"
                 placeholder="Enter your email"
+                hintText="We'll never share your email address"
               />
-              <PlaceholderInput
+              <Input
                 label="Phone Number"
-                value="+1 (555) 123-4567"
+                labelState="optional"
+                type="tel"
+                defaultValue="+1 (555) 123-4567"
                 placeholder="Enter your phone number"
               />
               <div className="sm:col-span-2">
-                <PlaceholderInput
+                <Input
                   label="Job Title"
-                  value="Senior Administrator"
+                  labelState="optional"
+                  defaultValue="Senior Administrator"
                   placeholder="Enter your job title"
                 />
               </div>
             </div>
 
             <div className="flex justify-end space-x-3 mt-6">
-              <PlaceholderButton variant="outline">Cancel</PlaceholderButton>
-              <PlaceholderButton>Save Changes</PlaceholderButton>
+              <Button variant="outline">Cancel</Button>
+              <Button variant="primary">Save Changes</Button>
             </div>
           </PlaceholderCard>
 
@@ -127,21 +102,28 @@ export default function Profile() {
               Company Information
             </h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <PlaceholderInput
+              <Input
                 label="Company Name"
-                value="Acme Corporation"
+                defaultValue="Portal Prototype Inc."
                 disabled
+                hintText="This field is managed by your administrator"
               />
-              <PlaceholderInput label="Company ID" value="ACME-001" disabled />
-              <PlaceholderInput
+              <Input
+                label="Company ID"
+                defaultValue="PROTO-001"
+                disabled
+                hintText="Unique company identifier"
+              />
+              <Input
                 label="Department"
-                value="Information Technology"
+                defaultValue="Information Technology"
                 placeholder="Enter your department"
               />
-              <PlaceholderInput
+              <Input
                 label="Employee ID"
-                value="EMP-12345"
+                defaultValue="EMP-12345"
                 disabled
+                hintText="Your unique employee identifier"
               />
             </div>
           </PlaceholderCard>
@@ -158,9 +140,9 @@ export default function Profile() {
                     Last changed 3 months ago
                   </p>
                 </div>
-                <PlaceholderButton variant="outline" className="text-sm">
+                <Button variant="outline" size="sm">
                   Change Password
-                </PlaceholderButton>
+                </Button>
               </div>
 
               <div className="flex items-center justify-between py-3 border-b border-gray-100">
@@ -172,9 +154,9 @@ export default function Profile() {
                     Add an extra layer of security
                   </p>
                 </div>
-                <PlaceholderButton variant="outline" className="text-sm">
+                <Button variant="outline" size="sm">
                   Enable 2FA
-                </PlaceholderButton>
+                </Button>
               </div>
 
               <div className="flex items-center justify-between py-3">
@@ -184,9 +166,9 @@ export default function Profile() {
                     Manage your active sessions
                   </p>
                 </div>
-                <PlaceholderButton variant="outline" className="text-sm">
+                <Button variant="outline" size="sm">
                   View Sessions
-                </PlaceholderButton>
+                </Button>
               </div>
             </div>
           </PlaceholderCard>

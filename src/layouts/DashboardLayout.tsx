@@ -1,22 +1,10 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { cn } from "@/utils/cn";
 
-// Temporary placeholder components until we install the design system
-const PlaceholderButton = ({ children, className, ...props }: any) => (
-  <button
-    className={cn(
-      "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors",
-      "bg-primary text-white hover:bg-primary/90",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-      "disabled:pointer-events-none disabled:opacity-50",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </button>
-);
+// 🔥 Import real Button component
+import { Button } from "@serendipetey/components";
 
+// Keep placeholder sidebar for now (we'll replace this next)
 const PlaceholderSidebar = () => {
   const location = useLocation();
 
@@ -76,7 +64,7 @@ const PlaceholderSidebar = () => {
   );
 };
 
-const PlaceholderHeader = () => {
+const Header = () => {
   return (
     <header className="bg-white border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
@@ -84,7 +72,16 @@ const PlaceholderHeader = () => {
           Prototype Dashboard
         </h2>
         <div className="flex items-center space-x-4">
-          <PlaceholderButton size="sm">New Action</PlaceholderButton>
+          {/* 🔥 TEST: Real Button component */}
+          <Button variant="primary" size="sm">
+            New Action
+          </Button>
+
+          {/* 🔥 TEST: Additional button variants */}
+          <Button variant="outline" size="sm">
+            Secondary
+          </Button>
+
           <button className="text-gray-500 hover:text-gray-700 transition-colors">
             🔔
           </button>
@@ -102,7 +99,7 @@ export default function DashboardLayout() {
 
       {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">
-        <PlaceholderHeader />
+        <Header />
 
         {/* Page content */}
         <main className="flex-1 overflow-auto p-6">

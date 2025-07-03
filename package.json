@@ -13,10 +13,12 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@serendipetey/components": "^1.0.0",
+    "@serendipetey/design-tokens": "^1.0.0",
+    "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
-    "clsx": "^2.1.1",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
