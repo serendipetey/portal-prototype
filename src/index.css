@@ -1,16 +1,10 @@
+/* Import design system tokens - USE MAIN ENTRY POINT */
+@import "@serendipetey/design-tokens/dist/css/index.css";
+
+/* Tailwind directives - NOW AFTER @import statements */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import design system tokens - NOW ACTIVE */
-@import "@serendipetey/design-tokens/dist/css/primitives/colors.css";
-@import "@serendipetey/design-tokens/dist/css/primitives/spacing.css";
-@import "@serendipetey/design-tokens/dist/css/primitives/typography.css";
-@import "@serendipetey/design-tokens/dist/css/primitives/borders.css";
-@import "@serendipetey/design-tokens/dist/css/primitives/shadows.css";
-@import "@serendipetey/design-tokens/dist/css/semantic/colors.css";
-@import "@serendipetey/design-tokens/dist/css/components/button.css";
-@import "@serendipetey/design-tokens/dist/css/components/input.css";
 
 /* Temporary fallback tokens until design system is installed */
 :root {
