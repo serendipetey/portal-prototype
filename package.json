@@ -16,6 +16,7 @@
     "@serendipetey/components": "^1.0.0",
     "@serendipetey/design-tokens": "^1.0.0",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.525.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
