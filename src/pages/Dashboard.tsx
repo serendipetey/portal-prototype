@@ -95,10 +95,7 @@ export default function Dashboard() {
 
           {/* Basic Input */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700">
-              Basic Input
-            </label>
-            <Input placeholder="Enter your text here..." />
+            <Input label="Basic Input" placeholder="Enter your text here..." />
           </div>
 
           {/* Required Input */}
