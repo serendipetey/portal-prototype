@@ -1,8 +1,7 @@
 // src/pages/Dashboard.tsx
 
 import { cn } from "@/utils/cn";
-import FinalButtonTest from "@/components/FinalButtonTest";
-import CSSLoadingTest from "../components/CSSLoadingTest";
+import ButtonTest from "../components/ButtonTest"; // Use the enhanced ButtonTest
 
 // Temporary placeholder components (will be replaced in later tasks)
 const PlaceholderCard = ({ children, className, ...props }: any) => (
@@ -43,17 +42,16 @@ const StatCard = ({
 export default function Dashboard() {
   return (
     <div className="space-y-6">
-      {/* 🎯 TASK 3: Button Test (focused testing) */}
+      {/* 🎯 Button Typography Test */}
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
         <h3 className="text-lg font-semibold text-yellow-900 mb-2">
-          🎯 Task 3: Primary Button Test
+          🎯 Button Typography Test
         </h3>
         <p className="text-yellow-700 text-sm mb-4">
-          Testing Primary button with fixed design token mappings. Button should
-          now match storybook design exactly.
+          Testing button with Poppins typography and design token integration.
+          Buttons should match storybook design exactly.
         </p>
-        <FinalButtonTest />
-        <CSSLoadingTest />
+        <ButtonTest />
       </div>
 
       {/* Original dashboard content */}
@@ -107,27 +105,33 @@ export default function Dashboard() {
                 time: "2 hours ago",
               },
               {
-                action: "Document approved",
+                action: "Review completed",
                 user: "Mike Chen",
                 time: "4 hours ago",
               },
               {
-                action: "Review completed",
-                user: "Emily Davis",
+                action: "Document uploaded",
+                user: "Emma Davis",
                 time: "6 hours ago",
               },
-            ].map((activity, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0"
-              >
-                <div>
-                  <p className="text-sm font-medium text-gray-900">
-                    {activity.action}
-                  </p>
-                  <p className="text-sm text-gray-500">{activity.user}</p>
+            ].map((item, index) => (
+              <div key={index} className="flex items-center space-x-3">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-medium">
+                      {item.user[0]}
+                    </span>
+                  </div>
                 </div>
-                <span className="text-sm text-gray-400">{activity.time}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900">
+                    {item.action}
+                  </p>
+                  <p className="text-sm text-gray-500">{item.user}</p>
+                </div>
+                <div className="flex-shrink-0 text-sm text-gray-500">
+                  {item.time}
+                </div>
               </div>
             ))}
           </div>
@@ -139,24 +143,39 @@ export default function Dashboard() {
             Quick Actions
           </h3>
           <div className="space-y-3">
-            <button className="w-full text-left p-3 rounded-md bg-gray-50 hover:bg-gray-100 transition-colors">
-              <div className="font-medium text-gray-900">
-                📝 Create New Application
-              </div>
-              <div className="text-sm text-gray-500">
-                Start a new application process
-              </div>
-            </button>
-            <button className="w-full text-left p-3 rounded-md bg-gray-50 hover:bg-gray-100 transition-colors">
-              <div className="font-medium text-gray-900">👥 Manage Users</div>
-              <div className="text-sm text-gray-500">
-                Add or remove user access
+            <button className="w-full text-left p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">📝</span>
+                <div>
+                  <p className="font-medium text-gray-900">New Application</p>
+                  <p className="text-sm text-gray-500">
+                    Start a new application process
+                  </p>
+                </div>
               </div>
             </button>
-            <button className="w-full text-left p-3 rounded-md bg-gray-50 hover:bg-gray-100 transition-colors">
-              <div className="font-medium text-gray-900">📊 View Reports</div>
-              <div className="text-sm text-gray-500">
-                Generate compliance reports
+
+            <button className="w-full text-left p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">📊</span>
+                <div>
+                  <p className="font-medium text-gray-900">View Reports</p>
+                  <p className="text-sm text-gray-500">
+                    Access detailed analytics
+                  </p>
+                </div>
+              </div>
+            </button>
+
+            <button className="w-full text-left p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">⚙️</span>
+                <div>
+                  <p className="font-medium text-gray-900">Settings</p>
+                  <p className="text-sm text-gray-500">
+                    Manage your preferences
+                  </p>
+                </div>
               </div>
             </button>
           </div>
