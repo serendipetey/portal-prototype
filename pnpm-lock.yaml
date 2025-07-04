@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@serendipetey/components':
-        specifier: ^1.0.14
-        version: 1.0.14(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^1.0.15
+        version: 1.0.15(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@serendipetey/design-tokens':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -27,59 +27,59 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-router-dom:
-        specifier: ^6.28.0
+        specifier: ^6.30.1
         version: 6.30.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
     devDependencies:
       '@types/node':
-        specifier: ^22.0.0
+        specifier: ^22.16.0
         version: 22.16.0
       '@types/react':
-        specifier: ^18.3.12
+        specifier: ^18.3.23
         version: 18.3.23
       '@types/react-dom':
-        specifier: ^18.3.1
+        specifier: ^18.3.7
         version: 18.3.7(@types/react@18.3.23)
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.15.0
+        specifier: ^8.35.1
         version: 8.35.1(@typescript-eslint/parser@8.35.1(eslint@9.30.1(jiti@1.21.7))(typescript@5.6.3))(eslint@9.30.1(jiti@1.21.7))(typescript@5.6.3)
       '@typescript-eslint/parser':
-        specifier: ^8.15.0
+        specifier: ^8.35.1
         version: 8.35.1(eslint@9.30.1(jiti@1.21.7))(typescript@5.6.3)
       '@vitejs/plugin-react':
-        specifier: ^4.3.3
+        specifier: ^4.6.0
         version: 4.6.0(vite@6.3.5(@types/node@22.16.0)(jiti@1.21.7)(yaml@2.8.0))
       autoprefixer:
-        specifier: ^10.4.20
+        specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.6)
       eslint:
-        specifier: ^9.15.0
+        specifier: ^9.30.1
         version: 9.30.1(jiti@1.21.7)
       eslint-plugin-react-hooks:
-        specifier: ^5.0.0
+        specifier: ^5.2.0
         version: 5.2.0(eslint@9.30.1(jiti@1.21.7))
       eslint-plugin-react-refresh:
-        specifier: ^0.4.14
+        specifier: ^0.4.20
         version: 0.4.20(eslint@9.30.1(jiti@1.21.7))
       postcss:
-        specifier: ^8.4.49
+        specifier: ^8.5.6
         version: 8.5.6
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
       tailwindcss:
-        specifier: ^3.4.14
+        specifier: ^3.4.17
         version: 3.4.17
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
       typescript:
-        specifier: ~5.6.2
+        specifier: ~5.6.3
         version: 5.6.3
       vite:
-        specifier: ^6.0.1
+        specifier: ^6.3.5
         version: 6.3.5(@types/node@22.16.0)(jiti@1.21.7)(yaml@2.8.0)
 
 packages:
@@ -553,14 +553,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@serendipetey/components@1.0.14':
-    resolution: {integrity: sha512-gMeFPhGfX51gkjg4Z8P64NevvyEymB7Mx9wiYbraIS2RNMi6xeBica/cvPZq6oRhiqxRPITyGI+zTrOttiy6nw==, tarball: https://npm.pkg.github.com/download/@serendipetey/components/1.0.14/5e2e0572e924e1c221c999bcf48c7bd8845a4439}
+  '@serendipetey/components@1.0.15':
+    resolution: {integrity: sha512-QPnYU1GJCQ/Em3FrzSp9IdZpd22f7QRwMAdxsyXl+d+ljJj1zUhi+qSHO5UNG7PG6zkuG7Hl+6GCisAhh3+YCQ==, tarball: https://npm.pkg.github.com/download/@serendipetey/components/1.0.15/77a6986738e8ace00438b5fb86f23cdfe8e7ebd2}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@serendipetey/design-tokens@1.0.0':
-    resolution: {integrity: sha512-MbA5JtKpmi2HcDo2HPSWh6O6jYoUSqtDuDExYEwdZKim/rpZfVv99urmHvKycAqIuvAuHPH8WK/MFordIup9OA==, tarball: https://npm.pkg.github.com/download/@serendipetey/design-tokens/1.0.0/56712fd47bcd2d76c95dd449787ef515210c7f97}
+  '@serendipetey/design-tokens@1.0.1':
+    resolution: {integrity: sha512-J3mH/v9iaCBbuJz7XCAynFO6vnploUuX4LxTSWoHxYGN+o2+aTynsobaMYfCYkvh77XmP87h3kKR5E0MQi6Ngg==, tarball: https://npm.pkg.github.com/download/@serendipetey/design-tokens/1.0.1/7953fdbbcac40166045e6baeb4193754091a238f}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1888,10 +1888,10 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.44.1':
     optional: true
 
-  '@serendipetey/components@1.0.14(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@serendipetey/components@1.0.15(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-slot': 1.2.3(@types/react@18.3.23)(react@18.3.1)
-      '@serendipetey/design-tokens': 1.0.0
+      '@serendipetey/design-tokens': 1.0.1
       class-variance-authority: 0.7.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -1899,7 +1899,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@serendipetey/design-tokens@1.0.0': {}
+  '@serendipetey/design-tokens@1.0.1': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
