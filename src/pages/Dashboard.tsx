@@ -1,7 +1,9 @@
-// src/pages/Dashboard.tsx
+// portal-prototype/src/pages/Dashboard.tsx
 
 import { cn } from "@/utils/cn";
-import ButtonTest from "../components/ButtonTest"; // Use the enhanced ButtonTest
+import ButtonValidation from "../components/ButtonValidation";
+import CSSTokenDiagnostic from "../components/CSSTokenDiagnostic";
+import ButtonComparisonTest from "../components/ButtonComparisonTest";
 
 // Temporary placeholder components (will be replaced in later tasks)
 const PlaceholderCard = ({ children, className, ...props }: any) => (
@@ -42,16 +44,41 @@ const StatCard = ({
 export default function Dashboard() {
   return (
     <div className="space-y-6">
-      {/* 🎯 Button Typography Test */}
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-        <h3 className="text-lg font-semibold text-yellow-900 mb-2">
-          🎯 Button Typography Test
+      {/* 🔬 Button Architecture Fix Test - Priority 1 */}
+      <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-purple-900 mb-2">
+          🔬 Button Architecture Fix Test
         </h3>
-        <p className="text-yellow-700 text-sm mb-4">
-          Testing button with Poppins typography and design token integration.
-          Buttons should match storybook design exactly.
+        <p className="text-purple-700 text-sm mb-4">
+          <strong>SOLUTION TEST:</strong> Comparing old vs fixed button
+          implementation. Fixed buttons should have perfect Storybook styling
+          with working hover states.
         </p>
-        <ButtonTest />
+        <ButtonComparisonTest />
+      </div>
+
+      {/* 🔍 CSS Diagnostic - Already confirmed properties are loaded */}
+      <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-red-900 mb-2">
+          🔍 CSS Token Pipeline Diagnostic
+        </h3>
+        <p className="text-red-700 text-sm mb-4">
+          <strong>PRIORITY:</strong> Diagnosing the architectural disconnect.
+          This will show exactly which CSS properties are missing.
+        </p>
+        <CSSTokenDiagnostic />
+      </div>
+
+      {/* 🎯 Button Validation Test */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-blue-900 mb-2">
+          🎯 Button Design System Validation
+        </h3>
+        <p className="text-blue-700 text-sm mb-4">
+          Testing buttons to match Storybook design exactly. Check typography,
+          colors, hover states, and sizing.
+        </p>
+        <ButtonValidation />
       </div>
 
       {/* Original dashboard content */}
@@ -62,125 +89,56 @@ export default function Dashboard() {
         </p>
       </div>
 
-      {/* Stats cards */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
-          title="Total Applications"
-          value="247"
-          icon="📄"
+          title="Total Users"
+          value="1,234"
+          icon="👥"
           change="+12% from last month"
         />
         <StatCard
-          title="Pending Reviews"
-          value="18"
-          icon="⏳"
-          change="+3 from yesterday"
+          title="Revenue"
+          value="$45,678"
+          icon="💰"
+          change="+8% from last month"
         />
         <StatCard
-          title="Approved This Month"
-          value="89"
+          title="Active Projects"
+          value="87"
+          icon="📊"
+          change="+15% from last month"
+        />
+        <StatCard
+          title="Completion Rate"
+          value="94%"
           icon="✅"
-          change="+23% from last month"
-        />
-        <StatCard
-          title="Success Rate"
-          value="94.2%"
-          icon="📈"
-          change="+2.1% from last month"
+          change="+3% from last month"
         />
       </div>
 
-      {/* Content sections */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Recent activity */}
-        <PlaceholderCard>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Recent Activity
-          </h3>
-          <div className="space-y-3">
-            {[
-              {
-                action: "Application submitted",
-                user: "Sarah Johnson",
-                time: "2 hours ago",
-              },
-              {
-                action: "Review completed",
-                user: "Mike Chen",
-                time: "4 hours ago",
-              },
-              {
-                action: "Document uploaded",
-                user: "Emma Davis",
-                time: "6 hours ago",
-              },
-            ].map((item, index) => (
-              <div key={index} className="flex items-center space-x-3">
-                <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-medium">
-                      {item.user[0]}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900">
-                    {item.action}
-                  </p>
-                  <p className="text-sm text-gray-500">{item.user}</p>
-                </div>
-                <div className="flex-shrink-0 text-sm text-gray-500">
-                  {item.time}
-                </div>
-              </div>
-            ))}
-          </div>
-        </PlaceholderCard>
-
-        {/* Quick actions */}
-        <PlaceholderCard>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Quick Actions
-          </h3>
-          <div className="space-y-3">
-            <button className="w-full text-left p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">📝</span>
-                <div>
-                  <p className="font-medium text-gray-900">New Application</p>
-                  <p className="text-sm text-gray-500">
-                    Start a new application process
-                  </p>
-                </div>
-              </div>
-            </button>
-
-            <button className="w-full text-left p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">📊</span>
-                <div>
-                  <p className="font-medium text-gray-900">View Reports</p>
-                  <p className="text-sm text-gray-500">
-                    Access detailed analytics
-                  </p>
-                </div>
-              </div>
-            </button>
-
-            <button className="w-full text-left p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">⚙️</span>
-                <div>
-                  <p className="font-medium text-gray-900">Settings</p>
-                  <p className="text-sm text-gray-500">
-                    Manage your preferences
-                  </p>
-                </div>
-              </div>
-            </button>
-          </div>
-        </PlaceholderCard>
-      </div>
+      {/* Recent Activity */}
+      <PlaceholderCard>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          Recent Activity
+        </h2>
+        <div className="space-y-3">
+          {[
+            "New user registration from Jane Smith",
+            "Project Alpha completed successfully",
+            "Monthly report generated",
+            "System backup completed",
+          ].map((activity, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg"
+            >
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span className="text-sm text-gray-700">{activity}</span>
+            </div>
+          ))}
+        </div>
+      </PlaceholderCard>
     </div>
   );
 }

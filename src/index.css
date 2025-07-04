@@ -1,7 +1,10 @@
 /* portal-prototype/src/index.css */
 
-/* Import design tokens from npm package instead of relative path */
+/* Import design tokens from npm package */
 @import "@serendipetey/design-tokens/dist/css/index.css";
+
+/* 🚨 EMERGENCY CSS TOKEN INJECTION - Test if this fixes the button issue */
+@import "./emergency-button-tokens.css";
 
 /* Import Tailwind */
 @import "tailwindcss/base";

@@ -4,7 +4,6 @@ import { cn } from "@/utils/cn";
 import { Button } from "@serendipetey/components";
 
 // 🔍 Temporary debug component
-import ButtonDebugTest from "@/components/ButtonDebugTest";
 
 // Temporary placeholder card (will be replaced in Task 2)
 const PlaceholderCard = ({ children, className, ...props }: any) => (
@@ -53,7 +52,6 @@ export default function Settings() {
   return (
     <div className="space-y-6">
       {/* 🔍 TEMPORARY: Debug test for Button component */}
-      <ButtonDebugTest />
 
       {/* Page header */}
       <div>
