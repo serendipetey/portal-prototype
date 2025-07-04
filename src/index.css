@@ -1,34 +1,22 @@
-/* src/index.css - Portal Prototype CSS */
+/* portal-prototype/src/index.css */
 
-/* 🔥 SIMPLIFIED: Import the complete CSS bundle from design system */
-@import "@serendipetey/components/dist/styles.css";
+/* Import design tokens first */
+@import "../../design-system/packages/tokens/dist/css/index.css";
 
-/* Portal-specific base styles only */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
+/* Import Tailwind */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Simple base styles without problematic classes */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-/* Minimal reset for portal */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Portal-specific utility classes (if needed) */
-.portal-container {
-  min-height: 100vh;
-}
-
-/* Remove any portal-specific overrides that might conflict */

@@ -1,7 +1,9 @@
-import { cn } from "@/utils/cn";
-import CSSVerificationTest from "@/components/CSSVerificationTest";
+// src/pages/Dashboard.tsx
 
-// Temporary placeholder components
+import { cn } from "@/utils/cn";
+import FinalButtonTest from "@/components/FinalButtonTest";
+
+// Temporary placeholder components (will be replaced in later tasks)
 const PlaceholderCard = ({ children, className, ...props }: any) => (
   <div
     className={cn(
@@ -40,16 +42,16 @@ const StatCard = ({
 export default function Dashboard() {
   return (
     <div className="space-y-6">
-      {/* 🔥 PHASE 1 TEST: CSS Verification (temporary) */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="text-lg font-semibold text-blue-900 mb-2">
-          🔍 Phase 1: CSS Loading Test
+      {/* 🎯 TASK 3: Button Test (focused testing) */}
+      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <h3 className="text-lg font-semibold text-yellow-900 mb-2">
+          🎯 Task 3: Primary Button Test
         </h3>
-        <p className="text-blue-700 text-sm mb-4">
-          This verification panel will be removed once CSS loading is confirmed
-          working.
+        <p className="text-yellow-700 text-sm mb-4">
+          Testing Primary button with fixed design token mappings. Button should
+          now match storybook design exactly.
         </p>
-        <CSSVerificationTest />
+        <FinalButtonTest />
       </div>
 
       {/* Original dashboard content */}
@@ -109,16 +111,21 @@ export default function Dashboard() {
               },
               {
                 action: "Review completed",
-                user: "Emma Wilson",
+                user: "Emily Davis",
                 time: "6 hours ago",
               },
             ].map((activity, index) => (
-              <div key={index} className="flex items-center justify-between">
+              <div
+                key={index}
+                className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0"
+              >
                 <div>
-                  <p className="font-medium text-gray-900">{activity.action}</p>
-                  <p className="text-sm text-gray-600">by {activity.user}</p>
+                  <p className="text-sm font-medium text-gray-900">
+                    {activity.action}
+                  </p>
+                  <p className="text-sm text-gray-500">{activity.user}</p>
                 </div>
-                <span className="text-sm text-gray-500">{activity.time}</span>
+                <span className="text-sm text-gray-400">{activity.time}</span>
               </div>
             ))}
           </div>
@@ -130,37 +137,24 @@ export default function Dashboard() {
             Quick Actions
           </h3>
           <div className="space-y-3">
-            <button className="w-full text-left p-3 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors">
-              <div className="flex items-center gap-3">
-                <span className="text-xl">📝</span>
-                <div>
-                  <p className="font-medium text-gray-900">New Application</p>
-                  <p className="text-sm text-gray-600">
-                    Start a new application process
-                  </p>
-                </div>
+            <button className="w-full text-left p-3 rounded-md bg-gray-50 hover:bg-gray-100 transition-colors">
+              <div className="font-medium text-gray-900">
+                📝 Create New Application
+              </div>
+              <div className="text-sm text-gray-500">
+                Start a new application process
               </div>
             </button>
-            <button className="w-full text-left p-3 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors">
-              <div className="flex items-center gap-3">
-                <span className="text-xl">📊</span>
-                <div>
-                  <p className="font-medium text-gray-900">View Reports</p>
-                  <p className="text-sm text-gray-600">
-                    Access detailed analytics
-                  </p>
-                </div>
+            <button className="w-full text-left p-3 rounded-md bg-gray-50 hover:bg-gray-100 transition-colors">
+              <div className="font-medium text-gray-900">👥 Manage Users</div>
+              <div className="text-sm text-gray-500">
+                Add or remove user access
               </div>
             </button>
-            <button className="w-full text-left p-3 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors">
-              <div className="flex items-center gap-3">
-                <span className="text-xl">⚙️</span>
-                <div>
-                  <p className="font-medium text-gray-900">Manage Settings</p>
-                  <p className="text-sm text-gray-600">
-                    Configure your preferences
-                  </p>
-                </div>
+            <button className="w-full text-left p-3 rounded-md bg-gray-50 hover:bg-gray-100 transition-colors">
+              <div className="font-medium text-gray-900">📊 View Reports</div>
+              <div className="text-sm text-gray-500">
+                Generate compliance reports
               </div>
             </button>
           </div>
