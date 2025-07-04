@@ -2,6 +2,7 @@
 
 import { cn } from "@/utils/cn";
 import FinalButtonTest from "@/components/FinalButtonTest";
+import CSSLoadingTest from "../components/CSSLoadingTest";
 
 // Temporary placeholder components (will be replaced in later tasks)
 const PlaceholderCard = ({ children, className, ...props }: any) => (
@@ -52,6 +53,7 @@ export default function Dashboard() {
           now match storybook design exactly.
         </p>
         <FinalButtonTest />
+        <CSSLoadingTest />
       </div>
 
       {/* Original dashboard content */}
