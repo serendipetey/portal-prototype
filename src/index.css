@@ -1,14 +1,14 @@
 /* portal-prototype/src/index.css */
 
-/* Import design tokens first */
-@import "../../design-system/packages/tokens/dist/css/index.css";
+/* Import design tokens from npm package instead of relative path */
+@import "@serendipetey/design-tokens/dist/css/index.css";
 
 /* Import Tailwind */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Simple base styles without problematic classes */
+/* Simple base styles */
 @layer base {
   :root {
     --background: 0 0% 100%;
