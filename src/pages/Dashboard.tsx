@@ -1,35 +1,21 @@
 // portal-prototype/src/pages/Dashboard.tsx
 
+import { useState } from "react";
 import { Button, Input } from "@serendipetey/components";
 
 export default function Dashboard() {
+  const [interactiveLoading, setInteractiveLoading] = useState(false);
+
+  const handleLoadingTest = () => {
+    setInteractiveLoading(true);
+    // Simulate async operation
+    setTimeout(() => {
+      setInteractiveLoading(false);
+    }, 3000);
+  };
+
   return (
     <div className="p-8 space-y-8 bg-white">
-      <div className="space-y-4">
-        <h1 className="text-2xl font-bold text-gray-900">
-          🔍 Design System Pipeline Test
-        </h1>
-        <p className="text-gray-600">
-          Testing clean import and usage of Button and Input components from
-          design system
-        </p>
-      </div>
-
-      {/* Pipeline Status */}
-      <div className="p-4 border rounded bg-blue-50">
-        <h2 className="text-lg font-semibold text-blue-900 mb-2">
-          Pipeline Status
-        </h2>
-        <div className="text-sm space-y-1">
-          <div>✅ Design system builds successfully</div>
-          <div>
-            ✅ Component library installed: @serendipetey/components@1.0.3
-          </div>
-          <div>✅ Clean import works: import Button from component library</div>
-          <div>🔍 Testing Input import and rendering...</div>
-        </div>
-      </div>
-
       {/* Button Component Test */}
       <div className="space-y-4">
         <h2 className="text-lg font-semibold text-gray-900">
@@ -71,7 +57,14 @@ export default function Dashboard() {
           <h3 className="text-sm font-semibold text-gray-700 mb-3">
             States & Loading
           </h3>
-          <div className="flex items-center gap-3">
+          <div className="p-4 bg-yellow-50 border border-yellow-200 rounded mb-3">
+            <p className="text-sm text-yellow-700 mb-2">
+              <strong>Animation Test:</strong> The loading buttons below should
+              show a spinning animation. If you don't see spinning, the
+              tailwindcss-animate plugin needs to be configured.
+            </p>
+          </div>
+          <div className="flex items-center gap-3 mb-4">
             <Button variant="primary" loading>
               Loading
             </Button>
@@ -79,10 +72,29 @@ export default function Dashboard() {
               Disabled
             </Button>
           </div>
+
+          <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            Interactive Loading Test
+          </h3>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="primary"
+              loading={interactiveLoading}
+              onClick={handleLoadingTest}
+              disabled={interactiveLoading}
+            >
+              {interactiveLoading ? "Loading..." : "Click to Test Loading"}
+            </Button>
+            <span className="text-sm text-gray-500">
+              {interactiveLoading
+                ? "🔄 Should show spinning animation"
+                : "Click to see 3-second loading animation"}
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* NEW: Input Component Test */}
+      {/* Input Component Test */}
       <div className="space-y-4">
         <h2 className="text-lg font-semibold text-gray-900">
           Input Component Test
@@ -178,21 +190,14 @@ export default function Dashboard() {
             <Input type="search" placeholder="Search..." />
             <Input type="url" placeholder="Website URL" />
           </div>
-        </div>
-      </div>
 
-      {/* Pipeline Validation Status */}
-      <div className="p-4 border rounded bg-green-50">
-        <h2 className="text-lg font-semibold text-green-900 mb-2">
-          Pipeline Validation Results
-        </h2>
-        <div className="text-sm space-y-1">
-          <div>🔍 Testing import/export pipeline...</div>
-          <div>🔍 Testing design token loading...</div>
-          <div>🔍 Testing component rendering...</div>
-          <div>🔍 Testing TypeScript support...</div>
-          <div className="text-green-700 font-medium mt-2">
-            ✅ If you can see Input components above, the pipeline is working!
+          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
+            Disabled Input
+          </h3>
+
+          {/* Disabled Input */}
+          <div className="space-y-2">
+            <Input label="Disabled Input" value="Cannot edit this" disabled />
           </div>
         </div>
       </div>

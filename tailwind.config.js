@@ -79,10 +79,8 @@ export default {
     },
   },
 
-  // Remove preflight to avoid conflicts with design system
-  corePlugins: {
-    preflight: false,
-  },
+  // Enable preflight but exclude conflicting base styles if needed
+  // Preflight is required for animations to work properly
 
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
