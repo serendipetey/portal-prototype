@@ -13,7 +13,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@serendipetey/components": "^1.0.2",
+    "@serendipetey/components": "^1.0.3",
     "@serendipetey/design-tokens": "^1.0.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.525.0",
