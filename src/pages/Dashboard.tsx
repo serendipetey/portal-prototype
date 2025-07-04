@@ -1,6 +1,6 @@
 // portal-prototype/src/pages/Dashboard.tsx
 
-import { Button } from "@serendipetey/components";
+import { Button, Input } from "@serendipetey/components";
 
 export default function Dashboard() {
   return (
@@ -10,7 +10,8 @@ export default function Dashboard() {
           🔍 Design System Pipeline Test
         </h1>
         <p className="text-gray-600">
-          Testing clean import and usage of Button component from design system
+          Testing clean import and usage of Button and Input components from
+          design system
         </p>
       </div>
 
@@ -22,14 +23,14 @@ export default function Dashboard() {
         <div className="text-sm space-y-1">
           <div>✅ Design system builds successfully</div>
           <div>
-            ✅ Component library installed: @serendipetey/components@1.0.2
+            ✅ Component library installed: @serendipetey/components@1.0.3
           </div>
           <div>✅ Clean import works: import Button from component library</div>
-          <div>🔍 Testing button rendering and functionality...</div>
+          <div>🔍 Testing Input import and rendering...</div>
         </div>
       </div>
 
-      {/* Clean Button Test */}
+      {/* Button Component Test */}
       <div className="space-y-4">
         <h2 className="text-lg font-semibold text-gray-900">
           Button Component Test
@@ -68,73 +69,133 @@ export default function Dashboard() {
           </div>
 
           <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            Hover Test
+            States & Loading
           </h3>
-          <div className="flex gap-3">
-            <Button variant="primary">Hover Me</Button>
-            <Button variant="outline">Hover Me</Button>
-            <Button variant="cta">Hover Me</Button>
+          <div className="flex items-center gap-3">
+            <Button variant="primary" loading>
+              Loading
+            </Button>
+            <Button variant="primary" disabled>
+              Disabled
+            </Button>
           </div>
         </div>
       </div>
 
-      {/* Expected Issues (Pre-Fix) */}
-      <div className="p-4 border rounded bg-yellow-50">
-        <h2 className="text-lg font-semibold text-yellow-900 mb-2">
-          Expected Issues (Before Permanent Fix)
+      {/* NEW: Input Component Test */}
+      <div className="space-y-4">
+        <h2 className="text-lg font-semibold text-gray-900">
+          Input Component Test
         </h2>
-        <div className="text-sm text-yellow-700 space-y-1">
-          <div>
-            ❌ Buttons use hardcoded fallback values (not design tokens)
+
+        <div className="p-4 border rounded space-y-6">
+          <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            Basic Input States
+          </h3>
+
+          {/* Basic Input */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-700">
+              Basic Input
+            </label>
+            <Input placeholder="Enter your text here..." />
           </div>
-          <div>❌ Only outline hover state works</div>
-          <div>
-            ❌ Sizing uses Tailwind classes (h-8, h-10, etc.) instead of 32px,
-            40px, etc.
+
+          {/* Required Input */}
+          <div className="space-y-2">
+            <Input
+              label="Required Field"
+              labelState="required"
+              placeholder="This field is required"
+            />
           </div>
-          <div>❌ Typography may not use Poppins weight 500 correctly</div>
-          <div>✅ But components render and import cleanly!</div>
+
+          {/* Optional Input */}
+          <div className="space-y-2">
+            <Input
+              label="Optional Field"
+              labelState="optional"
+              placeholder="This field is optional"
+            />
+          </div>
+
+          {/* Input with Hint Text */}
+          <div className="space-y-2">
+            <Input
+              label="Email Address"
+              labelState="required"
+              placeholder="you@example.com"
+              hintText="We'll never share your email with anyone else."
+            />
+          </div>
+
+          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
+            Input States (Error/Success)
+          </h3>
+
+          {/* Error State */}
+          <div className="space-y-2">
+            <Input
+              label="Password"
+              labelState="required"
+              type="password"
+              placeholder="Enter password"
+              error="Password must be at least 8 characters long"
+              variant="error"
+            />
+          </div>
+
+          {/* Success State */}
+          <div className="space-y-2">
+            <Input
+              label="Username"
+              labelState="required"
+              placeholder="Choose a username"
+              success="Username is available!"
+              variant="success"
+            />
+          </div>
+
+          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
+            Input Sizes
+          </h3>
+
+          {/* Different Sizes */}
+          <div className="space-y-3">
+            <Input size="sm" placeholder="Small input" />
+            <Input size="md" placeholder="Medium input (default)" />
+            <Input size="lg" placeholder="Large input" />
+            <Input size="xl" placeholder="Extra large input" />
+          </div>
+
+          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
+            Input Types
+          </h3>
+
+          {/* Different Input Types */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input type="email" placeholder="Email" />
+            <Input type="tel" placeholder="Phone number" />
+            <Input type="number" placeholder="Age" />
+            <Input type="date" />
+            <Input type="search" placeholder="Search..." />
+            <Input type="url" placeholder="Website URL" />
+          </div>
         </div>
       </div>
 
-      {/* Pipeline Success Criteria */}
+      {/* Pipeline Validation Status */}
       <div className="p-4 border rounded bg-green-50">
         <h2 className="text-lg font-semibold text-green-900 mb-2">
-          Pipeline Verification ✅
+          Pipeline Validation Results
         </h2>
-        <div className="text-sm text-green-700 space-y-1">
-          <div>✅ Design system builds without errors</div>
-          <div>✅ Component library publishes correctly</div>
-          <div>✅ Prototype imports components cleanly</div>
-          <div>✅ No module resolution errors</div>
-          <div>✅ Ready for permanent fix implementation</div>
-        </div>
-      </div>
-
-      {/* Simple Dashboard Content */}
-      <div className="mt-8">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Dashboard</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-4 border rounded bg-gray-50">
-            <h3 className="font-semibold text-gray-900">Total Users</h3>
-            <p className="text-2xl font-bold text-gray-900">1,234</p>
-            <Button variant="primary" size="sm" className="mt-2">
-              View Details
-            </Button>
-          </div>
-          <div className="p-4 border rounded bg-gray-50">
-            <h3 className="font-semibold text-gray-900">Revenue</h3>
-            <p className="text-2xl font-bold text-gray-900">$45,678</p>
-            <Button variant="outline" size="sm" className="mt-2">
-              View Report
-            </Button>
-          </div>
-          <div className="p-4 border rounded bg-gray-50">
-            <h3 className="font-semibold text-gray-900">Projects</h3>
-            <p className="text-2xl font-bold text-gray-900">87</p>
-            <Button variant="cta" size="sm" className="mt-2">
-              Create New
-            </Button>
+        <div className="text-sm space-y-1">
+          <div>🔍 Testing import/export pipeline...</div>
+          <div>🔍 Testing design token loading...</div>
+          <div>🔍 Testing component rendering...</div>
+          <div>🔍 Testing TypeScript support...</div>
+          <div className="text-green-700 font-medium mt-2">
+            ✅ If you can see Input components above, the pipeline is working!
           </div>
         </div>
       </div>
