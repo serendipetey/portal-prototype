@@ -170,7 +170,7 @@ export default function Dashboard() {
           </h3>
 
           {/* Different Sizes */}
-          <div className="space-y-3">
+          <div>
             <Input size="sm" placeholder="Small input" />
             <Input size="md" placeholder="Medium input (default)" />
             <Input size="lg" placeholder="Large input" />
@@ -196,7 +196,7 @@ export default function Dashboard() {
           </h3>
 
           {/* Disabled Input */}
-          <div className="space-y-2">
+          <div>
             <Input label="Disabled Input" value="Cannot edit this" disabled />
           </div>
         </div>
