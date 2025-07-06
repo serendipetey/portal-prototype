@@ -62,6 +62,15 @@ export default {
         },
       },
 
+      // Add custom text color classes for form component states
+      textColor: {
+        "input-text-error": "#eb0000", // DISTINCT ERROR RED
+        "input-text-success": "#007d85", // TEAL SUCCESS
+        "input-text-warning": "#b75b00", // ORANGE WARNING
+        "input-helper": "#39444f", // Charcoal for helper text
+        "text-muted": "#6b7280", // Gray for muted text
+      },
+
       spacing: {
         // Map design token spacing
         4: "var(--space-4, 4px)",

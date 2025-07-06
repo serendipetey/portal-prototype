@@ -149,8 +149,8 @@ export default function Dashboard() {
               labelState="required"
               type="password"
               placeholder="Enter password"
-              error="Password must be at least 8 characters long"
-              variant="error"
+              hintText="Password must be at least 8 characters long"
+              error="Password is too weak - add special characters"
             />
           </div>
 
