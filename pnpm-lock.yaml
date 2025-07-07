@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@serendipetey/components':
-        specifier: ^1.0.27
-        version: 1.0.27(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^1.0.29
+        version: 1.0.29(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@serendipetey/design-tokens':
-        specifier: ^1.0.7
-        version: 1.0.7
+        specifier: ^1.0.8
+        version: 1.0.8
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -553,14 +553,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@serendipetey/components@1.0.27':
-    resolution: {integrity: sha512-JZfs5oiyFK70omaKc2nvpYfhasUKn3VkWifi9MWoPvjDNJcdGe47pvsmnw4uZHrQzcURfWuEpl0B9MUzLk3fMA==, tarball: https://npm.pkg.github.com/download/@serendipetey/components/1.0.27/5a81bbad380828c82599d9641fb2d164d5714c0c}
+  '@serendipetey/components@1.0.29':
+    resolution: {integrity: sha512-KitYW/hkv7ZQ32hjtcriKD5pnTs95EWSjxZ1rzdC1JHoLl5VRfYvG6mknxMpGJQrK6RLUHLQfgbK6mhU7EMlJw==, tarball: https://npm.pkg.github.com/download/@serendipetey/components/1.0.29/fccf011ccb980332bcb18592639ac034c56c6610}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@serendipetey/design-tokens@1.0.7':
-    resolution: {integrity: sha512-povuEHOg+Jn6D0AtPKprjQB1pAFEz9okkuD9D4BWffHXuszxpOlyzKLvieW3Cm+xBuFEnHIwYx41jxoWFl/jrg==, tarball: https://npm.pkg.github.com/download/@serendipetey/design-tokens/1.0.7/bdecd3e780bada089efcefd251172d6ec08bd3a8}
+  '@serendipetey/design-tokens@1.0.8':
+    resolution: {integrity: sha512-iRblYwV3YF2ZLahVP2Yyc0Y/GseazQevwJxf+aEBMVj4Cd8TxxpnGVUpgMbdc/aCxkMtLtUm05iCYoh2dmfN5Q==, tarball: https://npm.pkg.github.com/download/@serendipetey/design-tokens/1.0.8/ce0d1e62be80559fc7bd7259e02ab5c502c57bb4}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1888,10 +1888,10 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.44.1':
     optional: true
 
-  '@serendipetey/components@1.0.27(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@serendipetey/components@1.0.29(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-slot': 1.2.3(@types/react@18.3.23)(react@18.3.1)
-      '@serendipetey/design-tokens': 1.0.7
+      '@serendipetey/design-tokens': 1.0.8
       class-variance-authority: 0.7.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -1899,7 +1899,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@serendipetey/design-tokens@1.0.7': {}
+  '@serendipetey/design-tokens@1.0.8': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
