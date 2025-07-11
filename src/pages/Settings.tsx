@@ -1,205 +1,158 @@
-import { cn } from "@/utils/cn";
+// portal-prototype/src/pages/Settings.tsx
+import { Button, Input } from "@serendipetey/components";
+import { Bell, Shield, Palette, Globe } from "lucide-react";
 
-// 🔥 Import real design system components
-import { Button } from "@serendipetey/components";
-
-// 🔍 Temporary debug component
-
-// Temporary placeholder card (will be replaced in Task 2)
-const PlaceholderCard = ({ children, className, ...props }: any) => (
+const Card = ({ children, className = "" }: any) => (
   <div
-    className={cn(
-      "rounded-lg border border-gray-200 bg-white p-6 shadow-sm",
-      className
-    )}
-    {...props}
+    className={`bg-white rounded-lg border border-gray-200 p-6 shadow-sm ${className}`}
   >
     {children}
   </div>
 );
 
-const SettingToggle = ({
-  label,
-  description,
-  enabled = false,
-}: {
-  label: string;
-  description: string;
-  enabled?: boolean;
-}) => (
-  <div className="flex items-center justify-between py-4 border-b border-gray-100 last:border-b-0">
-    <div className="flex-1">
-      <p className="font-medium text-gray-900">{label}</p>
-      <p className="text-sm text-gray-500">{description}</p>
+const SettingItem = ({ icon: Icon, title, description, action }: any) => (
+  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+    <div className="flex items-center space-x-3">
+      <div className="p-2 bg-white rounded-lg">
+        <Icon className="w-5 h-5 text-gray-600" />
+      </div>
+      <div>
+        <h4 className="font-medium text-gray-900">{title}</h4>
+        <p className="text-sm text-gray-500">{description}</p>
+      </div>
     </div>
-    <button
-      className={cn(
-        "relative inline-flex h-6 w-11 items-center rounded-full transition-colors",
-        enabled ? "bg-primary" : "bg-gray-200"
-      )}
-    >
-      <span
-        className={cn(
-          "inline-block h-4 w-4 rounded-full bg-white transition-transform",
-          enabled ? "translate-x-6" : "translate-x-1"
-        )}
-      />
-    </button>
+    <div>{action}</div>
   </div>
 );
 
 export default function Settings() {
   return (
     <div className="space-y-6">
-      {/* 🔍 TEMPORARY: Debug test for Button component */}
-
-      {/* Page header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
+        <h2 className="text-2xl font-bold text-gray-900">Settings</h2>
         <p className="text-gray-600">
-          Manage your application preferences and system settings.
+          Manage your application preferences and configurations.
         </p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Notification Settings */}
-        <PlaceholderCard>
+        <Card>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
             Notifications
           </h3>
-          <div className="space-y-1">
-            <SettingToggle
-              label="Email Notifications"
-              description="Receive email updates for important events"
-              enabled={true}
-            />
-            <SettingToggle
-              label="Push Notifications"
-              description="Get browser notifications for real-time updates"
-              enabled={false}
-            />
-            <SettingToggle
-              label="Application Updates"
-              description="Notifications when applications are reviewed"
-              enabled={true}
-            />
-            <SettingToggle
-              label="Weekly Reports"
-              description="Receive weekly summary reports via email"
-              enabled={true}
-            />
-          </div>
-        </PlaceholderCard>
-
-        {/* Display Settings */}
-        <PlaceholderCard>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Display</h3>
           <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Theme
-              </label>
-              <select className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20">
-                <option>Light</option>
-                <option>Dark</option>
-                <option>System</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Language
-              </label>
-              <select className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20">
-                <option>English</option>
-                <option>Spanish</option>
-                <option>French</option>
-                <option>German</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Timezone
-              </label>
-              <select className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20">
-                <option>UTC-8 (Pacific Time)</option>
-                <option>UTC-5 (Eastern Time)</option>
-                <option>UTC+0 (GMT)</option>
-                <option>UTC+1 (Central European)</option>
-              </select>
-            </div>
-          </div>
-        </PlaceholderCard>
-
-        {/* Security Settings */}
-        <PlaceholderCard>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Security</h3>
-          <div className="space-y-1">
-            <SettingToggle
-              label="Two-Factor Authentication"
-              description="Add an extra layer of security to your account"
-              enabled={false}
+            <SettingItem
+              icon={Bell}
+              title="Email Notifications"
+              description="Receive notifications via email"
+              action={
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    defaultChecked
+                  />
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                </label>
+              }
             />
-            <SettingToggle
-              label="Session Timeout"
-              description="Automatically log out after inactivity"
-              enabled={true}
-            />
-            <SettingToggle
-              label="Login Notifications"
-              description="Get notified when someone logs into your account"
-              enabled={true}
+            <SettingItem
+              icon={Bell}
+              title="Push Notifications"
+              description="Receive push notifications in browser"
+              action={
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" className="sr-only peer" />
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                </label>
+              }
             />
           </div>
-        </PlaceholderCard>
+        </Card>
 
-        {/* Account Management */}
-        <PlaceholderCard>
+        <Card>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Account Management
+            Appearance
           </h3>
-          <div className="grid grid-cols-1 gap-4">
-            <div className="text-center p-4 border border-gray-200 rounded-lg">
-              <span className="text-3xl mb-2 block">📊</span>
-              <h4 className="font-medium text-gray-900">Export Data</h4>
-              <p className="text-sm text-gray-500 mb-3">
-                Download your account data
-              </p>
-              <Button variant="outline" className="text-sm">
-                Export
-              </Button>
-            </div>
+          <div className="space-y-4">
+            <SettingItem
+              icon={Palette}
+              title="Theme"
+              description="Choose your preferred theme"
+              action={
+                <select className="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option>Light</option>
+                  <option>Dark</option>
+                  <option>System</option>
+                </select>
+              }
+            />
+            <SettingItem
+              icon={Globe}
+              title="Language"
+              description="Select your preferred language"
+              action={
+                <select className="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option>English</option>
+                  <option>Spanish</option>
+                  <option>French</option>
+                </select>
+              }
+            />
+          </div>
+        </Card>
 
-            <div className="text-center p-4 border border-gray-200 rounded-lg">
-              <span className="text-3xl mb-2 block">🔄</span>
-              <h4 className="font-medium text-gray-900">Backup Settings</h4>
-              <p className="text-sm text-gray-500 mb-3">
-                Create a backup of your settings
-              </p>
-              <Button variant="outline" className="text-sm">
-                Backup
-              </Button>
-            </div>
+        <Card>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Privacy & Security
+          </h3>
+          <div className="space-y-4">
+            <SettingItem
+              icon={Shield}
+              title="Data Export"
+              description="Download your data"
+              action={
+                <Button variant="outline" size="sm">
+                  Export
+                </Button>
+              }
+            />
+            <SettingItem
+              icon={Shield}
+              title="Delete Account"
+              description="Permanently delete your account"
+              action={
+                <Button variant="destructive" size="sm">
+                  Delete
+                </Button>
+              }
+            />
+          </div>
+        </Card>
 
-            <div className="text-center p-4 border border-red-200 rounded-lg bg-red-50">
-              <span className="text-3xl mb-2 block">⚠️</span>
-              <h4 className="font-medium text-red-900">Delete Account</h4>
-              <p className="text-sm text-red-700 mb-3">
-                Permanently delete your account
-              </p>
-              <Button variant="destructive" className="text-sm">
-                Delete
-              </Button>
+        <Card>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Organization
+          </h3>
+          <div className="space-y-4">
+            <Input
+              label="Organization Name"
+              defaultValue="Portal Pro"
+              placeholder="Enter organization name"
+            />
+            <Input
+              label="Organization ID"
+              defaultValue="portal-pro-1"
+              placeholder="Enter organization ID"
+              hintText="This cannot be changed"
+              disabled
+            />
+            <div className="flex justify-end space-x-3 mt-4">
+              <Button variant="outline">Cancel</Button>
+              <Button variant="primary">Save Changes</Button>
             </div>
           </div>
-        </PlaceholderCard>
-      </div>
-
-      {/* Save button */}
-      <div className="flex justify-end space-x-3">
-        <Button variant="outline">Reset to Defaults</Button>
-        <Button>Save All Changes</Button>
+        </Card>
       </div>
     </div>
   );

@@ -1,23 +1,31 @@
 /* portal-prototype/src/index.css */
 
-/* Import design tokens from npm package */
+/* Import design tokens first */
 @import "@serendipetey/design-tokens/dist/css/index.css";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /* Import Tailwind */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Simple base styles */
+/* Base styles for the prototype */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial,
+      sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light;
   }
 
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    margin: 0;
+    min-height: 100vh;
+    background-color: hsl(var(--background, 0 0% 100%));
+    color: hsl(var(--foreground, 222.2 84% 4.9%));
+  }
+
+  #root {
+    min-height: 100vh;
   }
 }

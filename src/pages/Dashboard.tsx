@@ -1,203 +1,135 @@
 // portal-prototype/src/pages/Dashboard.tsx
+import { BarChart3, Users, DollarSign, TrendingUp } from "lucide-react";
+import { Button } from "@serendipetey/components";
 
-import { useState } from "react";
-import { Button, Input } from "@serendipetey/components";
+const StatCard = ({ icon: Icon, title, value, change }: any) => (
+  <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm font-medium text-gray-600">{title}</p>
+        <p className="text-2xl font-bold text-gray-900">{value}</p>
+        {change && (
+          <p className="text-sm text-green-600 mt-1">
+            <TrendingUp className="inline w-4 h-4 mr-1" />
+            {change}
+          </p>
+        )}
+      </div>
+      <div className="p-3 bg-blue-50 rounded-full">
+        <Icon className="w-6 h-6 text-blue-600" />
+      </div>
+    </div>
+  </div>
+);
 
 export default function Dashboard() {
-  const [interactiveLoading, setInteractiveLoading] = useState(false);
-
-  const handleLoadingTest = () => {
-    setInteractiveLoading(true);
-    // Simulate async operation
-    setTimeout(() => {
-      setInteractiveLoading(false);
-    }, 3000);
-  };
-
   return (
-    <div className="p-8 space-y-8 bg-white">
-      {/* Button Component Test */}
-      <div className="space-y-4">
-        <h2 className="text-lg font-semibold text-gray-900">
-          Button Component Test
-        </h2>
-
-        <div className="p-4 border rounded">
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            All Variants (Clean Import)
-          </h3>
-          <div className="flex flex-wrap gap-3 mb-4">
-            <Button variant="primary">Primary</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="cta">CTA</Button>
-            <Button variant="success">Success</Button>
-            <Button variant="warning">Warning</Button>
-            <Button variant="destructive">Destructive</Button>
-            <Button variant="ghost">Ghost</Button>
-          </div>
-
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            All Sizes
-          </h3>
-          <div className="flex items-center gap-3 mb-4">
-            <Button variant="primary" size="sm">
-              Small
-            </Button>
-            <Button variant="primary" size="md">
-              Medium
-            </Button>
-            <Button variant="primary" size="lg">
-              Large
-            </Button>
-            <Button variant="primary" size="xl">
-              XL
-            </Button>
-          </div>
-
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            States & Loading
-          </h3>
-          <div className="p-4 bg-yellow-50 border border-yellow-200 rounded mb-3">
-            <p className="text-sm text-yellow-700 mb-2">
-              <strong>Animation Test:</strong> The loading buttons below should
-              show a spinning animation. If you don't see spinning, the
-              tailwindcss-animate plugin needs to be configured.
-            </p>
-          </div>
-          <div className="flex items-center gap-3 mb-4">
-            <Button variant="primary" loading>
-              Loading
-            </Button>
-            <Button variant="primary" disabled>
-              Disabled
-            </Button>
-          </div>
-
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            Interactive Loading Test
-          </h3>
-          <div className="flex items-center gap-3">
-            <Button
-              variant="primary"
-              loading={interactiveLoading}
-              onClick={handleLoadingTest}
-              disabled={interactiveLoading}
-            >
-              {interactiveLoading ? "Loading..." : "Click to Test Loading"}
-            </Button>
-            <span className="text-sm text-gray-500">
-              {interactiveLoading
-                ? "🔄 Should show spinning animation"
-                : "Click to see 3-second loading animation"}
-            </span>
-          </div>
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">
+            Welcome back, John
+          </h2>
+          <p className="text-gray-600">
+            Here's what's happening with your portal today.
+          </p>
         </div>
+        <Button variant="primary">Create New</Button>
       </div>
 
-      {/* Input Component Test */}
-      <div className="space-y-4">
-        <h2 className="text-lg font-semibold text-gray-900">
-          Input Component Test
-        </h2>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <StatCard
+          icon={Users}
+          title="Total Users"
+          value="2,543"
+          change="+12% from last month"
+        />
+        <StatCard
+          icon={DollarSign}
+          title="Revenue"
+          value="$45,231"
+          change="+8% from last month"
+        />
+        <StatCard
+          icon={BarChart3}
+          title="Active Projects"
+          value="12"
+          change="+3 new this week"
+        />
+        <StatCard
+          icon={TrendingUp}
+          title="Growth Rate"
+          value="23.5%"
+          change="+2.1% from last quarter"
+        />
+      </div>
 
-        <div className="p-4 border rounded space-y-6">
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            Basic Input States
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Recent Activity
           </h3>
-
-          {/* Basic Input */}
-          <div className="space-y-2">
-            <Input label="Basic Input" placeholder="Enter your text here..." />
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                <Users className="w-4 h-4 text-blue-600" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-gray-900">
+                  New user registered
+                </p>
+                <p className="text-xs text-gray-500">2 minutes ago</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                <DollarSign className="w-4 h-4 text-green-600" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-gray-900">
+                  Payment received
+                </p>
+                <p className="text-xs text-gray-500">1 hour ago</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                <BarChart3 className="w-4 h-4 text-purple-600" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-gray-900">
+                  Report generated
+                </p>
+                <p className="text-xs text-gray-500">3 hours ago</p>
+              </div>
+            </div>
           </div>
+          <Button variant="outline" className="w-full mt-4">
+            View All Activity
+          </Button>
+        </div>
 
-          {/* Required Input */}
-          <div className="space-y-2">
-            <Input
-              label="Required Field"
-              labelState="required"
-              placeholder="This field is required"
-            />
-          </div>
-
-          {/* Optional Input */}
-          <div className="space-y-2">
-            <Input
-              label="Optional Field"
-              labelState="optional"
-              placeholder="This field is optional"
-            />
-          </div>
-
-          {/* Input with Hint Text */}
-          <div className="space-y-2">
-            <Input
-              label="Email Address"
-              labelState="required"
-              placeholder="you@example.com"
-              hintText="We'll never share your email with anyone else."
-            />
-          </div>
-
-          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
-            Input States (Error/Success)
+        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Quick Actions
           </h3>
-
-          {/* Error State */}
-          <div className="space-y-2">
-            <Input
-              label="Password"
-              labelState="required"
-              type="password"
-              placeholder="Enter password"
-              hintText="Password must be at least 8 characters long"
-              error="Password is too weak - add special characters"
-            />
-          </div>
-
-          {/* Success State */}
-          <div className="space-y-2">
-            <Input
-              label="Username"
-              labelState="required"
-              placeholder="Choose a username"
-              success="Username is available!"
-              variant="success"
-            />
-          </div>
-
-          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
-            Input Sizes
-          </h3>
-
-          {/* Different Sizes */}
-          <div className="space-y-3">
-            <Input size="sm" placeholder="Small input" />
-            <Input size="md" placeholder="Medium input (default)" />
-            <Input size="lg" placeholder="Large input" />
-            <Input size="xl" placeholder="Extra large input" />
-          </div>
-
-          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
-            Input Types
-          </h3>
-
-          {/* Different Input Types */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input type="email" placeholder="Email" />
-            <Input type="tel" placeholder="Phone number" />
-            <Input type="number" placeholder="Age" />
-            <Input type="date" />
-            <Input type="search" placeholder="Search..." />
-            <Input type="url" placeholder="Website URL" />
-          </div>
-
-          <h3 className="text-sm font-semibold text-gray-700 mb-3 pt-4">
-            Disabled Input
-          </h3>
-
-          {/* Disabled Input */}
-          <div className="space-y-2">
-            <Input label="Disabled Input" value="Cannot edit this" disabled />
+          <div className="grid grid-cols-2 gap-3">
+            <Button variant="outline" className="h-20 flex-col">
+              <Users className="w-5 h-5 mb-2" />
+              <span className="text-sm">Add User</span>
+            </Button>
+            <Button variant="outline" className="h-20 flex-col">
+              <BarChart3 className="w-5 h-5 mb-2" />
+              <span className="text-sm">View Reports</span>
+            </Button>
+            <Button variant="outline" className="h-20 flex-col">
+              <DollarSign className="w-5 h-5 mb-2" />
+              <span className="text-sm">Billing</span>
+            </Button>
+            <Button variant="outline" className="h-20 flex-col">
+              <TrendingUp className="w-5 h-5 mb-2" />
+              <span className="text-sm">Analytics</span>
+            </Button>
           </div>
         </div>
       </div>

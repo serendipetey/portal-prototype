@@ -1,8 +1,9 @@
 {
   "name": "portal-prototype",
   "version": "1.0.0",
-  "description": "Prototype portal application using design system components",
+  "description": "Clean prototype portal application showcasing design system components",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,7 +14,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@serendipetey/components": "^1.0.29",
+    "@serendipetey/components": "^1.0.45",
     "@serendipetey/design-tokens": "^1.0.8",
     "clsx": "^2.1.1",
     "lucide-react": "^0.525.0",
