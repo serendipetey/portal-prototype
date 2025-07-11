@@ -1,31 +1,63 @@
 /* portal-prototype/src/index.css */
 
-/* Import design tokens first */
+/* Import design tokens from published package */
 @import "@serendipetey/design-tokens/dist/css/index.css";
+
+/* Import Poppins font for consistency */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /* Import Tailwind */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Base styles for the prototype */
+/* Base styles for proper rendering */
 @layer base {
   :root {
-    font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial,
-      sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    color-scheme: light;
+    /* Ensure design token compatibility */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  * {
+    border-color: hsl(var(--border, 214 32% 91%));
   }
 
   body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: "Poppins", system-ui, sans-serif;
     margin: 0;
     min-height: 100vh;
-    background-color: hsl(var(--background, 0 0% 100%));
-    color: hsl(var(--foreground, 222.2 84% 4.9%));
   }
 
   #root {
     min-height: 100vh;
+  }
+}
+
+/* Ensure proper component styling */
+@layer components {
+  /* Fix any missing component styles */
+  .design-system-component {
+    font-family: "Poppins", system-ui, sans-serif;
+  }
+
+  /* Ensure error text color is properly applied */
+  .text-input-text-error {
+    color: var(--color-input-text-error, #eb0000) !important;
+  }
+
+  /* Ensure helper text variants work correctly */
+  .text-input-helper {
+    color: var(--color-input-helper, #374151);
+  }
+
+  .text-input-text-success {
+    color: var(--color-input-text-success, #007d85);
+  }
+
+  .text-input-text-warning {
+    color: var(--color-input-text-warning, #b75b00);
   }
 }
